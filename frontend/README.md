@@ -1,10 +1,10 @@
-# LandShield homepage
+# LandShield frontend
 
-React + JSX + Vite homepage based on the supplied design, including the responsive hero and navbar. Authentication and verification APIs are not connected yet.
+React + JSX + Vite implementation of the supplied homepage, login/register, and profile/identity-verification designs. Backend APIs are not connected.
 
 ## Run locally
 
-From your repository checkout (Node.js 20.19+ or 22.12+):
+Requires Node.js 20.19+ or 22.12+.
 
 ```sh
 cd frontend
@@ -12,55 +12,45 @@ npm ci
 npm run dev
 ```
 
-Open the local URL printed by Vite (normally http://127.0.0.1:5173).
+Open the URL printed by Vite (normally http://127.0.0.1:5173).
 
-```powershell
-npm.cmd test
-npm.cmd run build
-```
+## Pages and scope
 
-## Implemented scope
+- Homepage: responsive hero and unbranded navbar. Mobile menu supports Escape, outside click, and close after navigation.
+- `#signin`: branded login/register preview, buying/selling radio selection, password visibility, required-field validation, and help/privacy dialogs. Homepage Sign In, Get Started, Demo, and Try Demo open this page.
+- `#profile`: responsive dashboard/sidebar, editable personal details, document selection, sample-only consent, in-memory draft, review confirmation, status summary, and demo privacy card.
+- Direct `#profile` is a **public synthetic preview**, not an authenticated route. Login/register merely enter the frontend demo; they do not create a real account or session.
+- Use a sample email and a made-up password (at least eight characters). Passwords are discarded on continuation, not stored or transmitted. No Remember Me option is presented because persistence is not implemented.
+- Sample evidence accepts PDF/JPG/PNG up to 10 MB; local checks are not a substitute for server-side validation. Files remain in memory and are never uploaded to public assets or a backend.
+- Draft and review completion are local-only. No reviewer decision or confirmed identity is fabricated. Refresh/sign out clears the preview. Marketplace, transactions, settings, recovery, and government integration remain unconnected and explain this in dialogs.
+- No new runtime libraries, external fonts, or icon dependencies.
 
-- Left hero: demo notice, gradient headline, description, two actions, and four feature items.
-- Responsive mobile layout, keyboard focus styles, and reduced-motion support.
-- Inline SVG fallback icons; no external font, icon, or animation dependencies.
-- Preview actions open accessible native dialogs with honest demo/workflow information. They are not connected to login, verification, or a video.
-- Navbar: Home, How It Works, Features, About, Demo, Sign In, and Get Started; no logo or site name.
-- Mobile navigation supports Escape, outside-click dismissal, and closing after selection or switching to desktop layout.
-- Sign In is an informational preview and does not collect credentials. The right-side illustration is not implemented.
-
-## Connect the supplied assets
-
-The uploaded hero and four icons are connected in App.jsx. The served hero is frontend/public/assets/Main-hero.png. Icons are mapped as assurance → trusted, ai-verf → extraction, doc-search → comparison, and human-shield → transparency. Transparent, cropped display copies are generated while the uploaded originals remain untouched.
-
-The background retains its aspect ratio, fades into #031a34, and continues with that navy colour if the content is taller than the artwork. No fixed-height content clipping is used.
-
-To regenerate public artwork (requires Python and Pillow):
+## Validation
 
 ```sh
-# From the frontend directory:
+npm test
+npm run build
+```
+
+Optional real-browser checks use Playwright and installed Microsoft Edge:
+
+```sh
+npm install --no-save --package-lock=false playwright
+node scripts/check_home_browser.mjs
+node scripts/check_account_browser.mjs
+```
+
+Checks cover mobile/desktop layouts and account interactions. Screenshots are written to ignored `artifacts/`.
+
+## Artwork
+
+Uploaded originals are left unchanged. Served copies live in `frontend/public/assets/`. The two supplied cyan icons are used for evidence upload and demo privacy. The account backgrounds use a scenic crop from the supplied second-page design, excluding its text and form; the profile copy places the house on the right.
+
+To regenerate assets (Python + Pillow required):
+
+```sh
 python scripts/prepare_home_assets.py
+python scripts/prepare_account_assets.py
 ```
 
-Optional browser validation uses Playwright with installed Microsoft Edge (not a runtime dependency): install using `npm.cmd install --no-save --package-lock=false playwright`, then run `node scripts/check_home_browser.mjs` from the frontend directory. Screenshots are stored in ignored artifacts/.
-
-
-Put public-only design assets under frontend/public/assets and supply URLs from App.jsx:
-
-```jsx
-<HomeLeft
-  backgroundImage="/assets/hero.webp"
-  featureIcons={{
-    trusted: '/assets/trusted.svg',
-    extraction: '/assets/extraction.svg',
-    comparison: '/assets/comparison.svg',
-    transparency: '/assets/transparency.svg',
-  }}
-  onTryDemo={() => openPanel('demo')}
-  onWatchHowItWorks={() => openPanel('workflow')}
-/>
-```
-
-Use actual supplied filenames. Alternatively, import assets from src/assets and pass the imported URLs. Missing handlers explicitly disable their respective buttons. Private property/identity documents must never be stored in public/assets.
-
-The notice mirrors the design's proposed government-controlled deployment language; it is not a claim of government adoption. All records in a demo must remain synthetic and labelled simulated.
+Private identity/property evidence must never be placed in public assets. All prototype records must remain synthetic and labelled simulated; document comparison does not guarantee legal title.

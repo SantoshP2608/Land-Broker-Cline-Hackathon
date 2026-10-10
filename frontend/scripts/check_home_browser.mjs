@@ -54,7 +54,7 @@ try {
       assert.ok(await toggle.evaluate(element => element === document.activeElement));
       await toggle.click();
     }
-    for (const [label, title] of [['How It Works', 'How verification works'], ['About', 'About this platform'], ['Demo', 'Your journey starts here'], ['Sign In', 'Sign in preview'], ['Get Started', 'Your journey starts here']]) {
+    for (const [label, title] of [['How It Works', 'How verification works'], ['About', 'About this platform']]) {
       if (width <= 900 && !(await nav.getByRole('button', { name: label, exact: true }).isVisible())) await toggle.click();
       await nav.getByRole('button', { name: label, exact: true }).click();
       await page.getByRole('heading', { name: title, exact: true }).waitFor();
@@ -88,8 +88,8 @@ try {
     console.log(`PASS ${width}px: headline, page bounds, four icons, hero background`);
   }
   await page.getByRole('button', { name: 'Try Demo' }).click();
-  await page.getByRole('dialog').waitFor({ state: 'visible' });
-  await page.getByRole('button', { name: 'Close dialog' }).click();
+  await page.getByRole('heading', { name: 'Welcome back' }).waitFor();
+  await page.getByRole('link', { name: 'Back to home' }).click();
   await page.getByRole('button', { name: 'Watch How It Works' }).click();
   await page.getByRole('heading', { name: 'How verification works' }).waitFor();
   await page.keyboard.press('Escape');

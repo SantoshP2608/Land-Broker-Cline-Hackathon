@@ -1,6 +1,6 @@
 # Land Broker — Cline Hackathon
 
-## First-page frontend
+## Frontend — pages 1–3
 
 The LandShield homepage is implemented in `frontend/` using React and Vite. It includes the responsive hero, property-verification artwork, feature highlights, and desktop/mobile navigation without branding.
 
@@ -21,4 +21,4 @@ npm run build
 
 See [frontend/README.md](frontend/README.md) for browser checks and asset preparation instructions. Root PNG files are the original artwork used by the preparation script; served copies are in `frontend/public/assets/`.
 
-This is a homepage preview: sign-in, buyer/seller flows, document verification, and government integrations are not connected. Demo dialogs do not collect credentials or process real property records.
+Pages 2 and 3 add responsive login/register (`#signin`) and profile/identity evidence (`#profile`) previews. Homepage Sign In, Get Started, Demo, and Try Demo lead to the account page. Buying/selling context, form validation, sample evidence selection, draft, and review confirmation work locally. Passwords are discarded, and account details/files remain only in memory. Nothing is sent to a backend; there is no real authentication, identity approval, or government integration. Use synthetic data only.
