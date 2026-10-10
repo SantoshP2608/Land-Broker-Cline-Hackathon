@@ -1,0 +1,16 @@
+{
+  "name": "codealchemists-cline-extraction-worker",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "scripts": {
+    "test": "node --test tests/extractor.test.mjs",
+    "check": "node src/runner.mjs --check"
+  },
+  "dependencies": {
+    "@cline/sdk": "0.0.92"
+  }
+}
