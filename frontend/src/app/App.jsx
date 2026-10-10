@@ -6,6 +6,8 @@ import ProfilePage from '../features/account/ProfilePage.jsx';
 import SellerDashboard from '../features/seller/SellerDashboard.jsx';
 import ListLandForm from '../features/seller/ListLandForm.jsx';
 import BuyerPages from '../features/buyer/BuyerPages.jsx';
+import OutcomePage from '../features/outcome/OutcomePage.jsx';
+import OfficerPage from '../features/officer/OfficerPage.jsx';
 import '../features/account/account.css';
 import './App.css';
 
@@ -21,6 +23,7 @@ const panels = {
   settings: ['Settings preview', 'Account settings are not integrated yet. You can switch buying/selling context from the header or sign out to clear the demo session.'],
 };
 function currentPage() {
+  if (['#outcome', '#reviewer', '#registrar'].includes(window.location.hash)) return window.location.hash.slice(1);
   if (window.location.hash === '#marketplace' || window.location.hash.startsWith('#land-')) return 'buyer';
   if (window.location.hash === '#seller-dashboard') return 'seller-dashboard';
   if (window.location.hash === '#seller-list-land') return 'seller-list-land';
@@ -38,10 +41,11 @@ export default function App() {
     return () => window.removeEventListener('hashchange', navigate);
   }, []);
   useEffect(() => {
-    document.title = `${({home: 'Property document review', signin: 'Sign in', profile: 'Profile & Identity Verification', buyer: 'Browse lands', 'seller-dashboard': 'Seller dashboard', 'seller-list-land': 'List your land'})[page]} | LandShield`;
+    document.title = `${({outcome: 'Final outcome', reviewer: 'Reviewer demo', registrar: 'Registrar demo', home: 'Property document review', signin: 'Sign in', profile: 'Profile & Identity Verification', buyer: 'Browse lands', 'seller-dashboard': 'Seller dashboard', 'seller-list-land': 'List your land'})[page]} | LandShield`;
     if (page !== 'home') window.scrollTo(0, 0);
   }, [page]);
   function openPanel(nextPanel) {
+    if (nextPanel === 'transactions') { window.location.hash = 'outcome'; return; }
     if (nextPanel === 'marketplace' && journey === 'selling') { window.location.hash = 'seller-dashboard'; return; }
     if (nextPanel === 'marketplace') { window.location.hash = 'marketplace'; return; }
     if (nextPanel === 'demo' || nextPanel === 'signin') { window.location.hash = 'signin'; return; }
@@ -53,7 +57,7 @@ export default function App() {
   const [title, description] = panels[panel] || panels.help;
   const sellerProps = { onGoHome: () => { window.location.hash = 'home'; }, onSwitchToBuying: () => { setJourney('buying'); window.location.hash = 'marketplace'; }, onNavigate: (key) => { if (key === 'dashboard') window.location.hash = 'seller-dashboard'; else if (key === 'listings') window.location.hash = 'seller-list-land'; else if (key === 'profile') window.location.hash = 'profile'; else openPanel(key); } };
   return <>
-    {page === 'seller-dashboard' ? <SellerDashboard {...sellerProps} onListMyLand={() => { window.location.hash = 'seller-list-land'; }} /> : page === 'seller-list-land' ? <ListLandForm {...sellerProps} onCancel={() => { window.location.hash = 'seller-dashboard'; }} /> :
+    {page === 'outcome' ? <OutcomePage /> : page === 'reviewer' || page === 'registrar' ? <OfficerPage key={page} role={page} /> : page === 'seller-dashboard' ? <SellerDashboard {...sellerProps} onListMyLand={() => { window.location.hash = 'seller-list-land'; }} /> : page === 'seller-list-land' ? <ListLandForm {...sellerProps} onCancel={() => { window.location.hash = 'seller-dashboard'; }} /> :
     page === 'buyer' ? <BuyerPages account={account} onSignIn={() => { window.location.hash = 'signin'; }} onSwitchToSelling={() => { setJourney('selling'); window.location.hash = 'seller-dashboard'; }} onGoHome={() => { window.location.hash = 'home'; }} onProfile={() => { window.location.hash = 'profile'; }} onOpenPanel={openPanel} /> : page === 'home' ? <>
       <Navbar onOpenPanel={openPanel} />
       <a href="#marketplace" style={{position: 'absolute', top: 90, right: 30, zIndex: 11, color: '#6be0d4'}}>Browse lands without signing in →</a>
