@@ -9,7 +9,7 @@ const server = await createServer({ server: { host: '127.0.0.1', port: 5179, str
 let browser;
 try {
   await server.listen();
-  browser = await chromium.launch({ channel: 'msedge', headless: true });
+  browser = await chromium.launch({ channel: 'msedge', headless: true, args: ['--disable-extensions'] });
   const page = await browser.newPage();
   const errors = [];
   page.on('pageerror', error => errors.push(error.message));

@@ -1,6 +1,6 @@
 # LandShield frontend
 
-React + JSX + Vite implementation of the supplied homepage, login/register, and profile/identity-verification designs. Backend APIs are not connected.
+React + JSX + Vite implementation of the supplied homepage, login/register, profile/identity-verification, seller, agreement and cancellation designs. Account and transaction pages are local demos. Seller pages default to demo and expose an explicit API mode with documented integration limitations.
 
 ## Run locally
 
@@ -22,7 +22,11 @@ Open the URL printed by Vite (normally http://127.0.0.1:5173).
 - Direct `#profile` is a **public synthetic preview**, not an authenticated route. Login/register merely enter the frontend demo; they do not create a real account or session.
 - Use a sample email and a made-up password (at least eight characters). Passwords are discarded on continuation, not stored or transmitted. No Remember Me option is presented because persistence is not implemented.
 - Sample evidence accepts PDF/JPG/PNG up to 10 MB; local checks are not a substitute for server-side validation. Files remain in memory and are never uploaded to public assets or a backend.
-- Draft and review completion are local-only. No reviewer decision or confirmed identity is fabricated. Refresh/sign out clears the preview. Marketplace, transactions, settings, recovery, and government integration remain unconnected and explain this in dialogs.
+- Draft and review completion are local-only. No reviewer decision or confirmed identity is fabricated. Refresh/sign out clears the account preview. Marketplace, settings, recovery, and government integration remain unconnected and explain this in dialogs.
+- `/page-2` and `/signin` alias the account preview; `/page-3` and `/profile` alias the profile preview. Existing hash routes and homepage account entry points are preserved.
+- `/page-6`: listing verification/management; `/page-7`: buyer requests. See [PAGES_6_7.md](PAGES_6_7.md) for the explicit API configuration and eligibility boundaries.
+- `/page-12`: agreement/registration preparation; `/page-13`: cancellation/hold resolution. See [PAGES_12_13.md](PAGES_12_13.md) for local interactions and backend boundaries. Both are independent synthetic fixtures; they never perform payments, registration or ownership transfer.
+- `/transactions` provides a local transaction-stage chooser. About and the account Transactions preview dialog link to the seller and transaction pages. Account demo continuation is not a backend session and does not authorise seller API commands.
 - No new runtime libraries, external fonts, or icon dependencies.
 
 ## Validation
@@ -38,9 +42,14 @@ Optional real-browser checks use Playwright and installed Microsoft Edge:
 npm install --no-save --package-lock=false playwright
 node scripts/check_home_browser.mjs
 node scripts/check_account_browser.mjs
+node scripts/check_seller_browser.mjs
+node scripts/check_transaction_browser.mjs
+node scripts/check_integrated_browser.mjs
 ```
 
-Checks cover mobile/desktop layouts and account interactions. Screenshots are written to ignored `artifacts/`.
+Checks cover mobile/desktop layouts, account, seller and transaction interactions, and navigation across integrated pages. Run account and seller checks sequentially: both use port 5180. Screenshots are written to ignored `artifacts/`. Optional Playwright is not added to the package manifest or lockfile.
+
+Edge checks disable extensions. The account check separately reports external non-GET traffic from system-installed browser filtering; its no-mutation assertion covers the application origin. This environment traffic is not evidence of an application backend call.
 
 ## Artwork
 

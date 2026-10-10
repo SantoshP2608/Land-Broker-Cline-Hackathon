@@ -1,0 +1,259 @@
+.buyer-page {
+  --buyer-glass: rgba(3, 29, 66, .74);
+  --buyer-muted: var(--seller-muted, #b8cae8);
+  --buyer-cyan: var(--seller-cyan, #26e8ed);
+  --buyer-border: var(--seller-border, #185eaa);
+  color: #f4f8ff;
+  width: 100%;
+  min-width: 0;
+}
+
+.buyer-page *, .buyer-confirm * { box-sizing: border-box; }
+.buyer-page button, .buyer-page input, .buyer-page select { font: inherit; }
+.buyer-page button { cursor: pointer; }
+.buyer-page button:disabled { cursor: not-allowed; }
+.buyer-page :is(button, input, select, [role="tabpanel"]):focus-visible,
+.buyer-confirm button:focus-visible { outline: 2px solid var(--seller-cyan, #26e8ed); outline-offset: 4px; }
+.buyer-page .buyer-breadcrumb { display: flex; gap: 11px; color: var(--buyer-muted); font-size: 14px; margin: 0 0 10px; }
+.buyer-page .buyer-header { display: grid; grid-template-columns: minmax(280px, 1fr) minmax(540px, 1.36fr); gap: 24px; align-items: center; margin-bottom: 20px; }
+.buyer-page .buyer-heading h1 { margin: 0 0 4px; font-size: clamp(30px, 2.6vw, 42px); font-weight: 750; line-height: 1.12; letter-spacing: -.9px; }
+.buyer-page .buyer-heading h1 span { color: #74e7f1; }
+.buyer-page .buyer-heading > p { margin: 0; color: var(--buyer-muted); font-size: 17px; line-height: 1.45; }
+.buyer-page .buyer-summary { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 13px; }
+.buyer-page .ls-panel { background: var(--buyer-glass); border: 1px solid var(--buyer-border); border-radius: 14px; box-shadow: inset 0 0 16px rgba(31, 123, 235, .08), 0 0 14px rgba(4, 79, 190, .11); backdrop-filter: blur(12px); }
+.buyer-page .buyer-stat { display: flex; align-items: center; gap: 12px; min-height: 76px; border-radius: 12px; padding: 12px; }
+.buyer-page .buyer-stat-icon { display: grid; place-items: center; flex: 0 0 45px; width: 45px; height: 45px; border-radius: 50%; color: #87d3ff; background: rgba(18, 104, 208, .23); border: 1px solid rgba(36, 145, 255, .22); box-shadow: 0 0 17px rgba(0, 135, 255, .13); }
+.buyer-page .buyer-stat > div { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+.buyer-page .buyer-stat strong { font-size: 24px; line-height: 1.1; font-weight: 750; }
+.buyer-page .buyer-stat > div > span { font-size: 13px; color: #d2def0; white-space: nowrap; }
+.buyer-page .buyer-stat--pending .buyer-stat-icon { color: #ffd34d; background: rgba(222, 170, 0, .13); border-color: rgba(231, 185, 20, .3); box-shadow: 0 0 17px rgba(231, 185, 20, .12); }
+.buyer-page .buyer-stat--pending strong { color: #ffd34d; }
+.buyer-page .buyer-stat--accepted .buyer-stat-icon { color: var(--buyer-cyan); background: rgba(0, 224, 219, .13); border-color: rgba(0, 224, 219, .3); box-shadow: 0 0 17px rgba(0, 224, 219, .12); }
+.buyer-page .buyer-stat--accepted strong, .buyer-page .buyer-stat--accepted > div > span { color: var(--buyer-cyan); }
+.buyer-page .buyer-stat--declined .buyer-stat-icon { color: #ff648f; background: rgba(255, 57, 109, .13); border-color: rgba(255, 57, 109, .27); box-shadow: 0 0 17px rgba(255, 57, 109, .12); }
+.buyer-page .buyer-stat--declined strong { color: #ff648f; }
+
+.buyer-page .buyer-toolbar { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 4%; margin-bottom: 17px; }
+.buyer-page .buyer-tabs { display: flex; border: 1px solid #28496e; background: rgba(4, 27, 61, .7); border-radius: 11px; overflow: hidden; min-height: 45px; }
+.buyer-page .buyer-tabs > button { flex: 1; min-width: 0; padding: 11px 8px; border: 0; border-right: 1px solid #264365; background: transparent; color: #dae5f8; font-size: 14px; white-space: nowrap; }
+.buyer-page .buyer-tabs > button:last-child { border-right: 0; }
+.buyer-page .buyer-tabs > button[aria-selected="true"] { color: white; background: linear-gradient(100deg, #0878ff, #05bcf0); box-shadow: 0 0 20px rgba(0, 127, 255, .24); border-radius: 10px; }
+.buyer-page .buyer-tabs > button:focus-visible { outline-offset: -4px; }
+.buyer-page .buyer-tabs > button:hover:not([aria-selected="true"]) { background: rgba(29, 95, 165, .25); }
+.buyer-page .buyer-filters { display: grid; grid-template-columns: .95fr 1.22fr; gap: 15px; min-width: 0; }
+.buyer-page .buyer-listing-filter, .buyer-page .buyer-search { display: flex; align-items: center; position: relative; border: 1px solid var(--buyer-border); border-radius: 10px; background: rgba(3, 27, 61, .75); min-width: 0; box-shadow: inset 0 0 9px rgba(27, 131, 247, .08); }
+.buyer-page .buyer-listing-filter select { color-scheme: dark; color: #ecf3ff; appearance: none; width: 100%; height: 43px; background: transparent; border: 0; padding: 0 37px 0 15px; font-size: 14px; border-radius: 10px; cursor: pointer; text-overflow: ellipsis; }
+.buyer-page .buyer-listing-filter option { color: #ecf3ff; background: #082750; }
+.buyer-page .buyer-listing-filter > svg { position: absolute; right: 12px; pointer-events: none; color: var(--buyer-muted); }
+.buyer-page .buyer-search { gap: 12px; padding: 0 13px; color: var(--buyer-muted); }
+.buyer-page .buyer-search > svg { flex-shrink: 0; }
+.buyer-page .buyer-search input { min-width: 0; width: 100%; height: 43px; color: #f1f7ff; background: transparent; border: 0; padding: 0; border-radius: 7px; font-size: 14px; }
+.buyer-page .buyer-search input::placeholder { color: #b9c9e3; opacity: 1; }
+.buyer-page .buyer-search input::-webkit-search-cancel-button { cursor: pointer; filter: grayscale(1) brightness(2); }
+
+.buyer-page .buyer-content { display: grid; grid-template-columns: minmax(0, 1.33fr) minmax(0, 1fr); gap: 15px; align-items: start; }
+.buyer-page .buyer-list-column, .buyer-page .buyer-detail-column { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.buyer-page [role="tabpanel"][hidden] { display: none; }
+.buyer-page .buyer-request-panel { padding: 14px 11px 0; min-width: 0; }
+.buyer-page .buyer-panel-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 0 8px 13px; }
+.buyer-page h2 { margin: 0; color: #f7faff; font-size: 21px; font-weight: 700; line-height: 1.25; letter-spacing: -.3px; }
+.buyer-page .buyer-panel-heading h2 { font-size: 25px; }
+.buyer-page .buyer-refresh-label { color: var(--buyer-muted); font-size: 12px; }
+.buyer-page .buyer-request-list { padding: 0; margin: 0; list-style: none; }
+.buyer-page .buyer-request-list > li { margin: 0 8px; border-bottom: 1px solid rgba(133, 170, 218, .21); }
+.buyer-page .buyer-request-list > li:last-child { border-bottom: 0; }
+.buyer-page .buyer-request-row { width: calc(100% + 16px); margin: 0 -8px; display: grid; grid-template-columns: 57px minmax(138px, 1fr) minmax(152px, 1.1fr) minmax(112px, .78fr); align-items: center; gap: 15px; padding: 20px 15px; min-height: 104px; border: 1px solid transparent; border-radius: 12px; background: transparent; color: #f3f8ff; text-align: left; transition: border-color .16s ease, background .16s ease; }
+.buyer-page .buyer-request-row:hover { background: rgba(8, 66, 125, .35); }
+.buyer-page .buyer-request-row.is-selected { border-color: #24cafa; background: rgba(3, 36, 82, .84); box-shadow: inset 0 0 15px rgba(20, 170, 239, .13), 0 0 8px rgba(1, 169, 236, .13); }
+.buyer-page .buyer-avatar { display: inline-flex; align-items: center; justify-content: center; width: 56px; height: 56px; flex: 0 0 56px; border-radius: 50%; color: #073050; background: linear-gradient(140deg, #90dcf5, #b0f0fa); border: 1px solid #b0eaff; font-size: 19px; font-weight: 750; box-shadow: inset 0 0 10px rgba(32, 163, 241, .19), 0 0 13px rgba(5, 156, 237, .08); }
+.buyer-page .buyer-row-person { display: flex; flex-direction: column; align-items: flex-start; gap: 7px; min-width: 0; }
+.buyer-page .buyer-row-person > strong { font-size: 16px; line-height: 1.25; overflow-wrap: anywhere; }
+.buyer-page .buyer-identity { display: inline-flex; max-width: 100%; }
+.buyer-page .buyer-identity .ls-badge { display: inline-flex; align-items: center; gap: 6px; color: var(--buyer-cyan); font-size: 12px; font-weight: 600; border-radius: 14px; padding: 5px 9px; border: 1px solid rgba(38, 232, 237, .75); background: rgba(0, 51, 67, .45); line-height: 1.2; white-space: normal; text-align: left; }
+.buyer-page .buyer-identity svg { flex-shrink: 0; }
+.buyer-page .buyer-identity.is-pending .ls-badge { color: #ffcf3b; border-color: #b18b17; background: rgba(101, 76, 5, .16); }
+.buyer-page .buyer-identity.is-failed .ls-badge { color: #ff96b3; border-color: #b74669; background: rgba(103, 27, 54, .25); }
+.buyer-page .buyer-row-listing { display: flex; flex-direction: column; gap: 7px; padding-left: 17px; border-left: 1px solid #305373; min-height: 50px; justify-content: center; min-width: 0; }
+.buyer-page .buyer-request-row.is-selected .buyer-row-listing { border-left-color: #1189c4; }
+.buyer-page .buyer-row-listing > strong { font-size: 14px; line-height: 1.3; overflow-wrap: anywhere; }
+.buyer-page .buyer-row-listing > span { display: flex; flex-wrap: wrap; align-items: center; gap: 5px; font-size: 11px; line-height: 1.4; color: var(--buyer-muted); overflow-wrap: anywhere; }
+.buyer-page .buyer-meta-dot { padding: 0 3px; }
+.buyer-page .buyer-row-view { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px; padding: 10px 8px; border: 1px solid #2377df; border-radius: 11px; color: #b8e7ff; background: rgba(3, 34, 73, .68); font-size: 12px; box-shadow: inset 0 0 7px rgba(18, 99, 224, .13); line-height: 1.3; text-align: center; }
+.buyer-page .buyer-row-view small { width: 100%; font-size: 10px; color: var(--buyer-muted); }
+.buyer-page .buyer-list-footnote { display: flex; align-items: center; gap: 12px; margin: 0 9px; border-top: 1px solid rgba(133, 170, 218, .23); padding: 14px 0; color: var(--buyer-muted); font-size: 12px; line-height: 1.45; }
+.buyer-page .buyer-list-footnote > svg { flex-shrink: 0; }
+.buyer-page .buyer-ownership-notice { display: flex; align-items: center; gap: 26px; padding: 16px 27px; min-height: 84px; }
+.buyer-page .buyer-ownership-notice > svg { color: #8ed8ff; flex-shrink: 0; }
+.buyer-page .buyer-ownership-notice > div { border-left: 1px solid #34b3e6; padding-left: 26px; }
+.buyer-page .buyer-ownership-notice strong { font-size: 14px; font-weight: 650; }
+.buyer-page .buyer-ownership-notice p { margin: 4px 0 0; font-size: 13px; line-height: 1.45; color: var(--buyer-muted); }
+
+.buyer-page .buyer-detail { padding: 14px 18px 13px; }
+.buyer-page .buyer-detail-person { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 7px 0 9px; }
+.buyer-page .buyer-detail-person .buyer-avatar { width: 52px; height: 52px; flex-basis: 52px; font-size: 18px; }
+.buyer-page .buyer-detail-person > strong { font-size: 16px; }
+.buyer-page .buyer-detail-person .buyer-identity { margin-left: 5px; }
+.buyer-page .buyer-detail-parcel { display: grid; grid-template-columns: minmax(0, .94fr) minmax(0, 1.1fr); gap: 18px; align-items: start; }
+.buyer-page .buyer-parcel-image { display: block; width: 100%; min-width: 0; height: 123px; object-fit: cover; border: 1px solid rgba(50, 136, 235, .32); border-radius: 10px; background: #0b3359; }
+.buyer-page .buyer-image-fallback { display: grid; place-items: center; color: #75cbef; }
+.buyer-page .buyer-parcel-copy h3 { font-size: 17px; line-height: 1.25; margin: 1px 0 6px; font-weight: 700; overflow-wrap: anywhere; }
+.buyer-page .buyer-parcel-meta { display: flex; gap: 9px; flex-wrap: wrap; margin: 0; color: #d4e0f5; font-size: 13px; line-height: 1.35; }
+.buyer-page .buyer-note { border-top: 1px solid #224462; margin-top: 9px; padding-top: 7px; }
+.buyer-page .buyer-note > span { color: #b7c8e5; font-size: 12px; }
+.buyer-page .buyer-note p { margin: 2px 0 0; font-size: 13px; color: #d7e1f5; line-height: 1.42; overflow-wrap: anywhere; white-space: pre-wrap; }
+.buyer-page .buyer-actions { display: grid; grid-template-columns: 1.12fr 1fr; gap: 15px; margin-top: 13px; }
+.buyer-page .ls-btn { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 39px; color: #e3f2ff; border: 1px solid #2784e5; border-radius: 10px; background: rgba(3, 36, 79, .6); padding: 9px 14px; font-size: 13px; font-weight: 550; line-height: 1.3; }
+.buyer-page .ls-btn:hover:not(:disabled) { border-color: #39e8f2; background: rgba(11, 66, 116, .85); }
+.buyer-page .ls-btn--primary { background: linear-gradient(100deg, #0799ff, #03bdf0); border-color: #09b7fc; color: white; box-shadow: 0 0 12px rgba(6, 158, 245, .14); }
+.buyer-page .ls-btn--primary:hover:not(:disabled) { background: linear-gradient(100deg, #21acff, #15d0ee); }
+.buyer-page .ls-btn:disabled { opacity: .48; box-shadow: none; }
+.buyer-page .buyer-actions .ls-btn { font-size: 14px; min-height: 43px; }
+.buyer-page .buyer-accept-help { display: flex; align-items: flex-start; gap: 13px; font-size: 11.5px; color: #c0d0e8; line-height: 1.4; margin: 11px 2px 0; }
+.buyer-page .buyer-accept-help > svg { flex-shrink: 0; color: #0bd5f2; }
+.buyer-page .buyer-blocked { display: flex; align-items: flex-start; gap: 8px; font-size: 12px; color: #ffda7c; line-height: 1.5; margin: 11px 0 0; }
+.buyer-page .buyer-blocked > svg { flex-shrink: 0; margin-top: 2px; }
+.buyer-page .buyer-final-state { margin-top: 15px; }
+.buyer-page .buyer-final-state > .ls-badge { display: inline-flex; align-items: center; gap: 7px; }
+.buyer-page .buyer-final-state > p { color: var(--buyer-muted); font-size: 13px; line-height: 1.5; margin: 10px 0; }
+.buyer-page .buyer-reserved { padding: 12px 19px 10px; }
+.buyer-page .buyer-reserved-heading { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 10px; }
+.buyer-page .buyer-reserved-heading h2 { font-size: 20px; }
+.buyer-page .buyer-reserved-badge .ls-badge { display: inline-flex; align-items: center; gap: 7px; border: 1px solid #ae8b1d; border-radius: 12px; background: rgba(64, 43, 0, .5); padding: 6px 9px; color: #ffd34c; font-size: 11px; box-shadow: 0 0 15px rgba(231, 179, 18, .12); }
+.buyer-page .buyer-reserved-parcel { display: grid; grid-template-columns: minmax(0, .58fr) minmax(0, 1.32fr); gap: 15px; padding: 0 0 2px; }
+.buyer-page .buyer-reserved-parcel + .buyer-reserved-parcel { border-top: 1px solid #21496c; padding-top: 13px; margin-top: 12px; }
+.buyer-page .buyer-reserved-parcel .buyer-parcel-image { height: 90px; }
+.buyer-page .buyer-reserved-copy { min-width: 0; }
+.buyer-page .buyer-reserved-copy h3 { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; margin: 0 0 6px; font-size: 13px; line-height: 1.35; font-weight: 650; overflow-wrap: anywhere; }
+.buyer-page .buyer-reserved-copy h3 > span { color: #d9e3f4; font-weight: 450; }
+.buyer-page .buyer-reserved-copy p { margin: 0 0 3px; font-size: 12px; color: #dae5f7; line-height: 1.4; }
+.buyer-page .buyer-reserved-copy .ls-muted { color: var(--buyer-muted); font-size: 11px; }
+.buyer-page .buyer-reserved-copy .ls-btn { margin-top: 5px; min-height: 34px; padding: 7px 12px; font-size: 11px; border-color: #28b4ec; border-radius: 9px; }
+.buyer-page .buyer-reserved-copy .buyer-transaction-pending { color: #eccd84; margin-top: 7px; }
+.buyer-page .buyer-no-reservations { margin: 3px 0 5px; font-size: 13px; color: var(--buyer-muted); line-height: 1.5; }
+
+.buyer-page .buyer-empty { display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 10px; min-height: 297px; padding: 35px 18px; text-align: center; color: var(--buyer-muted); }
+.buyer-page .buyer-empty > svg { color: #6fbce9; }
+.buyer-page .buyer-empty h3 { color: #f0f6ff; margin: 2px 0 0; font-size: 18px; }
+.buyer-page .buyer-empty p { margin: 0; font-size: 14px; line-height: 1.5; }
+.buyer-page .buyer-detail-empty { display: flex; align-items: center; justify-content: center; flex-direction: column; min-height: 235px; color: var(--buyer-muted); text-align: center; padding: 20px; }
+.buyer-page .buyer-detail-empty p { font-size: 14px; line-height: 1.6; max-width: 310px; }
+.buyer-page .buyer-loading-dot { width: 24px; height: 24px; border-radius: 50%; border: 2px solid #22578b; border-top-color: var(--buyer-cyan); animation: buyer-spin .9s linear infinite; }
+@keyframes buyer-spin { to { transform: rotate(360deg); } }
+.buyer-page .buyer-live-message:not(.has-message) { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+.buyer-page .buyer-live-message.has-message { color: #b9f4f4; background: rgba(0, 75, 92, .48); border: 1px solid #187b94; border-radius: 10px; margin: 0 0 14px; padding: 12px 15px; font-size: 13px; line-height: 1.5; }
+.buyer-page .buyer-error { display: flex; align-items: center; gap: 13px; background: rgba(69, 23, 44, .75); border: 1px solid #a54c69; border-radius: 12px; padding: 14px 16px; margin-bottom: 15px; color: #ffd8e3; }
+.buyer-page .buyer-error > svg { flex-shrink: 0; }
+.buyer-page .buyer-error > div { flex: 1; }
+.buyer-page .buyer-error strong { font-size: 14px; }
+.buyer-page .buyer-error p { margin: 4px 0 0; font-size: 12px; line-height: 1.5; }
+.buyer-page .buyer-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+
+.buyer-confirm { color: #e7f1ff; }
+.buyer-confirm > p { margin: 0 0 18px; font-size: 15px; line-height: 1.65; }
+.buyer-confirm .buyer-confirm-explanation { display: flex; align-items: flex-start; gap: 14px; border: 1px solid #236898; border-radius: 12px; background: rgba(8, 54, 82, .6); padding: 16px; }
+.buyer-confirm .buyer-confirm-explanation > svg { flex-shrink: 0; color: var(--seller-cyan, #26e8ed); }
+.buyer-confirm .buyer-confirm-explanation strong { color: #edfbff; font-size: 14px; }
+.buyer-confirm .buyer-confirm-explanation p { color: var(--seller-muted, #b8cae8); font-size: 13px; line-height: 1.65; margin: 6px 0 0; }
+.buyer-confirm .buyer-confirm-actions { display: flex; justify-content: flex-end; gap: 12px; flex-wrap: wrap; margin-top: 23px; }
+.buyer-confirm .buyer-confirm-status { min-height: 18px; color: var(--seller-muted, #b8cae8); font-size: 12px; margin: 10px 0 0; }
+
+@media (max-width: 1350px) {
+  .buyer-page .buyer-header { grid-template-columns: minmax(240px, 1fr) minmax(500px, 1.35fr); gap: 18px; }
+  .buyer-page .buyer-stat { gap: 9px; padding: 10px; }
+  .buyer-page .buyer-stat-icon { width: 39px; height: 39px; flex-basis: 39px; }
+  .buyer-page .buyer-stat > div > span { font-size: 12px; }
+  .buyer-page .buyer-summary { gap: 10px; }
+  .buyer-page .buyer-heading > p { font-size: 15px; }
+  .buyer-page .buyer-request-row { grid-template-columns: 48px minmax(113px, 1fr) minmax(133px, 1.1fr) 106px; gap: 11px; padding: 18px 11px; }
+  .buyer-page .buyer-request-row .buyer-avatar { width: 48px; height: 48px; flex-basis: 48px; font-size: 17px; }
+  .buyer-page .buyer-row-person > strong { font-size: 14px; }
+  .buyer-page .buyer-row-listing { padding-left: 12px; }
+  .buyer-page .buyer-row-listing > strong { font-size: 12px; }
+  .buyer-page .buyer-identity .ls-badge { font-size: 10px; padding: 5px 7px; }
+  .buyer-page .buyer-detail-person { gap: 9px; }
+  .buyer-page .buyer-detail-person > strong { font-size: 14px; }
+  .buyer-page .buyer-detail-person .buyer-identity { margin-left: 0; }
+  .buyer-page .buyer-detail-parcel { gap: 12px; }
+  .buyer-page .buyer-detail { padding-right: 15px; padding-left: 15px; }
+}
+
+@media (max-width: 1100px) {
+  .buyer-page .buyer-header { grid-template-columns: 1fr; gap: 17px; }
+  .buyer-page .buyer-summary { max-width: none; }
+  .buyer-page .buyer-stat { padding: 13px; gap: 12px; }
+  .buyer-page .buyer-stat > div > span { font-size: 13px; }
+  .buyer-page .buyer-toolbar { gap: 15px; grid-template-columns: 1fr; }
+  .buyer-page .buyer-content { grid-template-columns: 1fr; }
+  .buyer-page .buyer-request-row { grid-template-columns: 56px minmax(140px, 1fr) minmax(145px, 1.2fr) 140px; gap: 16px; padding: 19px 15px; }
+  .buyer-page .buyer-row-person > strong { font-size: 16px; }
+  .buyer-page .buyer-row-listing > strong { font-size: 14px; }
+  .buyer-page .buyer-identity .ls-badge { font-size: 12px; }
+  .buyer-page .buyer-detail-column { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); align-items: start; }
+  .buyer-page .buyer-detail-person { gap: 10px; }
+  .buyer-page .buyer-detail-parcel { grid-template-columns: minmax(0, .9fr) minmax(0, 1fr); }
+  .buyer-page .buyer-reserved-parcel { grid-template-columns: 1fr; gap: 10px; }
+  .buyer-page .buyer-reserved-parcel .buyer-parcel-image { height: 123px; }
+}
+
+@media (max-width: 1000px) {
+  .buyer-page .buyer-detail-column { display: flex; }
+  .buyer-page .buyer-request-row { grid-template-columns: 47px minmax(0, 1fr) 120px; gap: 10px 13px; padding: 17px 12px; }
+  .buyer-page .buyer-request-row .buyer-avatar { width: 47px; height: 47px; grid-row: 1; }
+  .buyer-page .buyer-row-person { grid-column: 2; grid-row: 1; }
+  .buyer-page .buyer-row-view { grid-column: 3; grid-row: 1 / span 2; }
+  .buyer-page .buyer-row-listing { grid-column: 2; border-left: 0; padding-left: 0; min-height: 0; gap: 4px; }
+  .buyer-page .buyer-stat { padding: 11px; gap: 9px; }
+  .buyer-page .buyer-stat-icon { width: 34px; height: 34px; flex-basis: 34px; }
+  .buyer-page .buyer-stat-icon > svg { width: 22px; height: 22px; }
+  .buyer-page .buyer-stat > div > span { font-size: 11px; }
+  .buyer-page .buyer-stat strong { font-size: 22px; }
+  .buyer-page .buyer-reserved-parcel { grid-template-columns: minmax(0, .65fr) minmax(0, 1.35fr); gap: 15px; }
+  .buyer-page .buyer-reserved-parcel .buyer-parcel-image { height: 100px; }
+  .buyer-page .buyer-detail-person .buyer-identity .ls-badge { font-size: 12px; }
+  .buyer-page .buyer-error { flex-wrap: wrap; align-items: flex-start; }
+  .buyer-page .buyer-error .ls-btn { margin-left: 34px; }
+}
+
+@media (max-width: 520px) {
+  .buyer-page .buyer-breadcrumb { font-size: 12px; }
+  .buyer-page .buyer-heading h1 { font-size: 33px; }
+  .buyer-page .buyer-heading > p { font-size: 14px; }
+  .buyer-page .buyer-summary { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+  .buyer-page .buyer-stat { min-height: 69px; padding: 12px; }
+  .buyer-page .buyer-stat > div > span { font-size: 12px; }
+  .buyer-page .buyer-stat-icon { width: 37px; height: 37px; flex-basis: 37px; }
+  .buyer-page .buyer-tabs > button { font-size: 12px; padding: 12px 5px; }
+  .buyer-page .buyer-filters { grid-template-columns: 1fr; gap: 10px; }
+  .buyer-page .buyer-panel-heading { padding-left: 4px; padding-right: 4px; }
+  .buyer-page .buyer-panel-heading h2 { font-size: 22px; }
+  .buyer-page .buyer-request-panel { padding-left: 8px; padding-right: 8px; }
+  .buyer-page .buyer-request-row { grid-template-columns: 44px minmax(0, 1fr); gap: 9px 12px; padding: 16px 10px; }
+  .buyer-page .buyer-request-row .buyer-avatar { width: 44px; height: 44px; font-size: 16px; }
+  .buyer-page .buyer-row-person > strong { font-size: 15px; }
+  .buyer-page .buyer-row-listing { grid-column: 2; }
+  .buyer-page .buyer-row-view { grid-column: 2; grid-row: 3; justify-content: flex-start; width: fit-content; font-size: 11px; padding: 7px 10px; }
+  .buyer-page .buyer-row-view small { width: auto; }
+  .buyer-page .buyer-identity .ls-badge { font-size: 11px; }
+  .buyer-page .buyer-list-footnote { font-size: 11px; gap: 9px; }
+  .buyer-page .buyer-ownership-notice { padding: 16px; gap: 16px; }
+  .buyer-page .buyer-ownership-notice > svg { width: 36px; height: 36px; }
+  .buyer-page .buyer-ownership-notice > div { padding-left: 15px; }
+  .buyer-page .buyer-ownership-notice strong { font-size: 13px; }
+  .buyer-page .buyer-ownership-notice p { font-size: 12px; }
+  .buyer-page .buyer-detail-person { gap: 9px; }
+  .buyer-page .buyer-detail-person .buyer-identity { margin-left: 61px; margin-top: -9px; }
+  .buyer-page .buyer-detail-parcel { grid-template-columns: 1fr; gap: 12px; }
+  .buyer-page .buyer-detail-parcel .buyer-parcel-image { height: 165px; }
+  .buyer-page .buyer-actions { gap: 10px; }
+  .buyer-page .buyer-reserved { padding: 15px; }
+  .buyer-page .buyer-reserved-parcel { grid-template-columns: 95px minmax(0, 1fr); gap: 12px; }
+  .buyer-page .buyer-reserved-heading h2 { font-size: 18px; }
+  .buyer-page .buyer-reserved-copy .ls-btn { width: 100%; font-size: 10px; gap: 6px; padding-left: 8px; padding-right: 8px; }
+  .buyer-confirm .buyer-confirm-actions { flex-direction: column-reverse; }
+  .buyer-confirm .buyer-confirm-actions .ls-btn { width: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .buyer-page .buyer-loading-dot { animation: none; }
+  .buyer-page .buyer-request-row { transition: none; }
+}

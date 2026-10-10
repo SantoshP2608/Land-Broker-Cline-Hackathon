@@ -1,0 +1,232 @@
+.cancellation-page {
+  --cancellation-muted: #bdcee8;
+  --cancellation-cyan: #35e5ed;
+  --cancellation-border: #175096;
+  color: #f2f7ff;
+  width: 100%;
+  min-width: 0;
+}
+
+.cancellation-page *, .cancellation-page *::before, .cancellation-page *::after { box-sizing: border-box; }
+.cancellation-page button, .cancellation-page input, .cancellation-page textarea { font: inherit; }
+.cancellation-page button { cursor: pointer; }
+.cancellation-page button:disabled { cursor: not-allowed; }
+.cancellation-page :is(button, input, textarea):focus-visible { outline: 3px solid #6bf7fb; outline-offset: 3px; }
+.cancellation-page h2 { margin: 0; color: #f4f7ff; font-size: 18px; font-weight: 700; line-height: 1.3; }
+.cancellation-page h3 { margin: 0; font-size: 14px; line-height: 1.4; }
+.cancellation-page p { line-height: 1.5; }
+.cancellation-page .ls-panel { min-width: 0; border: 1px solid var(--cancellation-border); border-radius: 13px; padding: 14px 16px; background: linear-gradient(110deg, rgba(3, 31, 66, .91), rgba(3, 28, 61, .88)); box-shadow: inset 0 0 18px #0765de0c, 0 3px 15px #00112c22; }
+.cancellation-page .ls-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 38px; max-width: 100%; padding: 8px 12px; border: 1px solid #235b99; border-radius: 8px; background: #0a315d88; color: #c7e7ff; text-align: center; line-height: 1.35; transition: background .15s, border-color .15s; }
+.cancellation-page .ls-btn svg { flex-shrink: 0; }
+.cancellation-page .ls-btn:hover:not(:disabled) { border-color: #30d8f3; background: #12437a; }
+.cancellation-page .ls-btn--primary { background: linear-gradient(110deg, #086bdd, #008dcb); border-color: #1aa8ee; color: white; }
+.cancellation-page .ls-btn--danger { background: #572342; border-color: #e76786; color: #ffdbe4; }
+.cancellation-page .ls-btn:disabled { opacity: .5; box-shadow: none; }
+.cancellation-page .ls-badge { display: inline-flex; align-items: center; gap: 5px; max-width: 100%; border-radius: 6px; padding: 4px 8px; border: 1px solid #b490344d; background: #66501e4f; color: #ffcf62; font-size: 10px; line-height: 1.2; }
+.cancellation-page .ls-badge svg { flex-shrink: 0; }
+.cancellation-stages { margin: 9px 0 12px; min-width: 0; }
+.cancellation-columns { display: grid; grid-template-columns: minmax(0, 1.62fr) minmax(0, 1fr); align-items: start; gap: 18px; }
+.cancellation-main-column, .cancellation-side-column { min-width: 0; display: grid; gap: 10px; }
+.cancellation-page .cancellation-request-panel { padding: 12px 18px 12px 16px; }
+.cancellation-section { display: flex; align-items: flex-start; gap: 14px; min-width: 0; }
+.cancellation-section-content { min-width: 0; flex: 1; }
+.cancellation-icon-circle { flex: 0 0 45px; display: grid; place-items: center; width: 45px; height: 45px; border-radius: 50%; margin-top: 0; }
+.cancellation-icon-circle--red { background: linear-gradient(135deg, #ff8d9e, #ff4a74); color: #631b39; border: 1px solid #ff859c; box-shadow: 0 0 15px #ff375523; }
+.cancellation-icon-circle--blue { background: linear-gradient(135deg, #1bcbff, #0790ff); color: #003b68; border: 1px solid #23adff; box-shadow: 0 0 15px #008cff23; }
+.cancellation-icon-circle--review { background: #032955; color: #92cfff; border: 2px solid #116ac7; }
+.cancellation-section-heading { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 17px; margin-bottom: 5px; }
+.cancellation-description { margin: 5px 0 10px; color: #d6e2f5; font-size: 12px; line-height: 1.5; }
+.cancellation-reason-box { padding: 10px 11px 9px; border: 1px solid #154779; border-radius: 9px; background: linear-gradient(120deg, #0a315ee8, #072951bd); }
+.cancellation-reason-heading { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 7px; }
+.cancellation-reason-heading h3 { font-size: 12px; font-weight: 700; }
+.cancellation-reason-heading > span { display: inline-flex; align-items: center; gap: 6px; color: #c2d2ec; font-size: 11px; }
+.cancellation-quote-row { display: flex; align-items: flex-start; gap: 8px; margin-top: 7px; min-width: 0; }
+.cancellation-quote-mark { color: #83caff; font-family: Georgia, serif; font-size: 37px; font-weight: bold; line-height: .95; height: 24px; flex: 0 0 17px; }
+.cancellation-page blockquote { flex: 1; min-width: 0; margin: 0; color: #e4edfb; font-size: 12px; line-height: 1.5; overflow-wrap: anywhere; }
+.cancellation-quote-row > time { flex-shrink: 0; color: #b9c9e2; font-size: 11px; padding-top: 1px; }
+.cancellation-page .cancellation-evidence-button { display: flex; width: 100%; justify-content: flex-start; min-height: 35px; margin-top: 10px; padding: 7px 10px; font-size: 11px; text-align: left; }
+.cancellation-evidence-button > span { flex: 1; min-width: 0; }
+.cancellation-page .cancellation-evidence-button--red { color: #ff8fae; border-color: #8a3b614f; background: #5d254451; box-shadow: inset 0 0 10px #d45e8009; }
+.cancellation-page .cancellation-evidence-button--red:hover:not(:disabled) { background: #612a4b; border-color: #f38bac; }
+.cancellation-page .cancellation-evidence-button--blue { color: #37c8f7; border-color: #115ccc; background: #05347570; box-shadow: inset 0 0 10px #177bf522; }
+.cancellation-response-section { margin-top: 12px; }
+.cancellation-response-meta { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 6px; color: #cad9ec; font-size: 12px; }
+.cancellation-response-meta > span { display: inline-flex; align-items: center; gap: 7px; }
+.cancellation-response-meta svg { color: #8ad7ff; }
+.cancellation-response-meta time { font-size: 11px; }
+.cancellation-page .cancellation-review-panel { padding: 12px 17px 10px; }
+.cancellation-review-panel .cancellation-section { gap: 16px; }
+.cancellation-review-panel .cancellation-description { margin: 5px 0 9px; max-width: 540px; }
+.cancellation-review-panel > .tx-progress { margin-top: 3px; }
+.cancellation-pending-note { display: flex; align-items: center; justify-content: center; gap: 6px; margin: 9px 0 0; color: #ffd178; font-size: 11px; }
+.cancellation-page .cancellation-actions-panel { padding: 10px 16px; }
+.cancellation-actions-panel h2 { margin-bottom: 7px; }
+.cancellation-actions-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 7px 10px; }
+.cancellation-page .cancellation-action { justify-content: flex-start; min-height: 35px; padding: 7px 9px; gap: 7px; text-align: left; font-size: 10px; background: linear-gradient(100deg, #0d3563d1, #082751); }
+.cancellation-action > span { min-width: 0; flex: 1; }
+.cancellation-page .cancellation-action--withdraw { background: linear-gradient(100deg, #57223e87, #2c203ac9); border-color: #87345165; color: #ff90aa; }
+.cancellation-page .cancellation-action--withdraw:hover:not(:disabled) { background: #572342; border-color: #ef8ca7; }
+.cancellation-action--upload { grid-column: 1 / -1; }
+.cancellation-page .cancellation-documents-panel { padding: 10px 14px; }
+.cancellation-documents-heading { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 7px; }
+.cancellation-documents-heading h2 { font-size: 17px; }
+.cancellation-page .cancellation-view-all { flex-shrink: 0; padding: 4px 0 4px 5px; min-height: 28px; border: 0; background: transparent; color: #35b7ef; gap: 7px; font-size: 11px; }
+.cancellation-document-tiles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.cancellation-document-tile { display: flex; align-items: center; justify-content: flex-start; flex-direction: column; gap: 7px; min-width: 0; min-height: 88px; padding: 9px 4px 8px; border: 1px solid #1d507d; border-radius: 8px; background: linear-gradient(125deg, #0e345de8, #092849ed); color: #e8f1ff; text-align: center; }
+.cancellation-document-tile:hover:not(:disabled) { border-color: #27c3ed; background: #123e71; }
+.cancellation-document-tile:disabled { opacity: .5; }
+.cancellation-document-tile svg { color: #79bdff; fill: #0759ad40; filter: drop-shadow(0 0 3px #2777e732); }
+.cancellation-document-tile span { font-size: 11px; line-height: 1.4; overflow-wrap: anywhere; }
+.cancellation-demo-note { display: flex; align-items: flex-start; gap: 6px; color: #a9bed9; font-size: 10px; margin: 10px 0 0; }
+.cancellation-demo-note svg { flex-shrink: 0; margin-top: 1px; }
+.cancellation-notice { padding: 11px 14px; margin: 0 0 12px; border: 1px solid #23868e; border-radius: 9px; color: #c6fffa; background: #063b4bbd; font-size: 13px; }
+.cancellation-error { display: flex; align-items: center; gap: 12px; padding: 13px 14px; margin: 0 0 12px; border: 1px solid #a85271; border-radius: 10px; background: #442139dc; color: #ffe1e9; font-size: 13px; }
+.cancellation-error > svg { flex-shrink: 0; }
+.cancellation-error > div { flex: 1; min-width: 0; }
+.cancellation-error p { margin: 3px 0 0; }
+.cancellation-loading { display: flex; align-items: center; gap: 12px; color: #bdd8f3; }
+.cancellation-loading p { margin: 0; font-size: 14px; }
+.cancellation-small-print { color: var(--cancellation-muted); font-size: 11px; line-height: 1.6; margin: 8px 0; }
+.cancellation-page .cancellation-messages-panel h2 { margin-bottom: 10px; }
+.cancellation-sent-messages { list-style: none; display: grid; gap: 9px; padding: 0; margin: 12px 0; }
+.cancellation-sent-messages li { padding: 10px 12px; border: 1px solid #235486; border-radius: 9px; background: #072952; }
+.cancellation-sent-messages li > div { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 5px; font-size: 11px; color: #b5d9ff; }
+.cancellation-sent-messages li > div > span { color: #adbfda; }
+.cancellation-sent-messages li p { white-space: pre-wrap; overflow-wrap: anywhere; margin: 5px 0 0; font-size: 13px; }
+
+.cancellation-page .ls-dialog { width: min(760px, calc(100% - 32px)); max-height: calc(100dvh - 32px); padding: 38px 26px 24px; overflow: auto; color: #f4f8ff; border: 1px solid #31a8d6; border-radius: 15px; background: #06244a; box-shadow: 0 20px 100px #0009; }
+.cancellation-page .ls-dialog::backdrop { background: #000e26c4; backdrop-filter: blur(5px); }
+.cancellation-page .ls-dialog > h2 { margin-bottom: 17px; font-size: 23px; }
+.cancellation-page .ls-dialog > .ls-eyebrow { font-size: 11px; letter-spacing: .08em; color: #59dbe6; margin-bottom: 8px; }
+.cancellation-page .ls-dialog__close { position: absolute; top: 9px; right: 9px; min-height: 30px; padding: 5px; border: 0; }
+.cancellation-modal { color: #dce9fb; min-width: 0; font-size: 14px; }
+.cancellation-modal > p { margin: 0 0 14px; }
+.cancellation-modal h3 { margin: 15px 0 8px; }
+.cancellation-modal-actions { display: flex; justify-content: flex-end; flex-wrap: wrap; gap: 10px; margin: 20px 0 10px; }
+.cancellation-modal-actions .ls-btn { min-height: 42px; font-size: 13px; }
+.cancellation-modal-callout { display: flex; align-items: flex-start; gap: 12px; padding: 13px 14px; margin: 13px 0; border: 1px solid #236898; border-radius: 10px; background: #073357; color: #d9edff; }
+.cancellation-modal-callout > svg { flex-shrink: 0; color: #68d6f6; }
+.cancellation-modal-callout > div { min-width: 0; }
+.cancellation-modal-callout strong { font-size: 13px; color: #eff8ff; }
+.cancellation-modal-callout p { margin: 4px 0 0; font-size: 13px; }
+.cancellation-modal-callout > p { margin: 0; }
+.cancellation-page .cancellation-field-label { display: block; margin: 16px 0 7px; font-size: 14px; font-weight: 600; }
+.cancellation-message-input { display: block; width: 100%; min-width: 0; min-height: 130px; resize: vertical; padding: 12px; border: 1px solid #4985b8; border-radius: 9px; background: #021a35; color: #f4f8ff; line-height: 1.5; }
+.cancellation-message-input:disabled { opacity: .65; }
+.cancellation-page .cancellation-file-input { width: 100%; max-width: 100%; padding: 10px; border: 1px solid #4985b8; border-radius: 9px; background: #021a35; color: #dce9fb; font-size: 12px; }
+.cancellation-file-input::file-selector-button { max-width: 100%; margin-right: 10px; padding: 8px 10px; border: 1px solid #3781bd; border-radius: 6px; background: #0a3561; color: #e0f5ff; cursor: pointer; }
+.cancellation-file-list { display: grid; gap: 8px; padding: 0; margin: 12px 0; list-style: none; }
+.cancellation-file-list li { display: flex; align-items: flex-start; gap: 8px; padding: 9px 11px; border: 1px solid #245385; border-radius: 7px; background: #0a2c51; }
+.cancellation-file-list li > span { min-width: 0; flex: 1; overflow-wrap: anywhere; font-size: 12px; }
+.cancellation-file-list svg { flex-shrink: 0; color: #75c8ff; }
+.cancellation-file-list small { flex-shrink: 0; color: #b3cce8; font-size: 10px; }
+.cancellation-inline-error { padding: 11px 12px; margin: 12px 0; border: 1px solid #b65a76; border-radius: 8px; background: #49233e; color: #ffdde6; font-size: 13px; overflow-wrap: anywhere; }
+.cancellation-inline-error > p { margin: 0 0 6px; }
+.cancellation-inline-error > svg { float: left; margin: 2px 7px 0 0; }
+.cancellation-document-viewer { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.6fr); gap: 12px; align-items: start; }
+.cancellation-document-selector { display: grid; gap: 7px; min-width: 0; }
+.cancellation-document-selector button { display: flex; align-items: flex-start; gap: 9px; min-height: 49px; width: 100%; padding: 10px 11px; border: 1px solid #275783; border-radius: 8px; background: #082b52; color: #d7e8fc; text-align: left; font-size: 12px; }
+.cancellation-document-selector button[aria-pressed="true"] { border-color: #21cbde; background: #064665; color: #edfdff; }
+.cancellation-document-selector button:hover { background: #10426c; }
+.cancellation-document-selector svg { flex-shrink: 0; color: #80ceff; }
+.cancellation-document-selector span { min-width: 0; overflow-wrap: anywhere; }
+.cancellation-document-selector small { display: block; margin-top: 3px; color: #a9c9e5; font-size: 10px; }
+.cancellation-document-preview { min-width: 0; padding: 14px; border: 1px solid #245783; border-radius: 9px; background: #031b36; }
+.cancellation-document-preview h3 { margin: 0 0 12px; overflow-wrap: anywhere; font-size: 15px; }
+.cancellation-document-preview pre { white-space: pre-wrap; overflow-wrap: anywhere; margin: 0; font: inherit; font-size: 12px; line-height: 1.7; color: #ccdef3; }
+.cancellation-document-preview > p { margin: 0; font-size: 12px; }
+.cancellation-land-artwork { display: block; width: 100%; max-height: 230px; object-fit: cover; border: 1px solid #2970a4; border-radius: 10px; }
+.cancellation-land-facts { display: grid; gap: 0; margin: 14px 0; }
+.cancellation-land-facts > div { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.7fr); gap: 15px; padding: 10px 0; border-bottom: 1px solid #22517c; font-size: 13px; }
+.cancellation-land-facts dt { color: #a9c4e2; }
+.cancellation-land-facts dd { margin: 0; overflow-wrap: anywhere; }
+.cancellation-guide-list { display: grid; gap: 13px; padding-left: 22px; margin: 18px 0; font-size: 13px; line-height: 1.7; }
+.cancellation-guide-list strong { color: #e9f5ff; }
+
+@media (max-width: 1280px) {
+  .cancellation-columns { gap: 12px; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); }
+  .cancellation-page .cancellation-request-panel { padding: 13px 12px; }
+  .cancellation-section { gap: 10px; }
+  .cancellation-icon-circle { flex-basis: 39px; width: 39px; height: 39px; }
+  .cancellation-section-heading { gap: 6px 9px; }
+  .cancellation-page h2 { font-size: 16px; }
+  .cancellation-page .cancellation-actions-panel, .cancellation-page .cancellation-documents-panel { padding: 11px; }
+  .cancellation-actions-grid { gap: 7px; }
+  .cancellation-page .cancellation-action { padding: 7px; gap: 5px; }
+  .cancellation-document-tiles { gap: 7px; }
+  .cancellation-document-tile span { font-size: 10px; }
+  .cancellation-quote-row { flex-wrap: wrap; }
+  .cancellation-quote-row > time { margin-left: auto; }
+}
+
+@media (max-width: 1024px) {
+  .cancellation-columns { grid-template-columns: minmax(0, 1fr); }
+  .cancellation-side-column { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
+  .cancellation-document-tile span { font-size: 11px; }
+  .cancellation-main-column { gap: 12px; }
+  .cancellation-page .cancellation-request-panel { padding: 16px; }
+  .cancellation-section { gap: 13px; }
+  .cancellation-icon-circle { flex-basis: 43px; width: 43px; height: 43px; }
+  .cancellation-page h2 { font-size: 18px; }
+  .cancellation-description, .cancellation-page blockquote { font-size: 13px; }
+  .cancellation-actions-grid { grid-template-columns: minmax(0, 1fr); }
+  .cancellation-action--upload { grid-column: auto; }
+  .cancellation-page .cancellation-action { min-height: 39px; font-size: 11px; }
+}
+
+@media (max-width: 768px) {
+  .cancellation-columns { gap: 12px; }
+  .cancellation-stages { margin: 12px 0; }
+  .cancellation-side-column { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .cancellation-actions-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cancellation-action--upload { grid-column: 1 / -1; }
+  .cancellation-page .cancellation-documents-panel, .cancellation-page .cancellation-actions-panel { padding: 14px; }
+  .cancellation-page .cancellation-evidence-button { font-size: 12px; min-height: 41px; }
+  .cancellation-document-tile { min-height: 93px; }
+  .cancellation-document-tile span { font-size: 12px; }
+  .cancellation-page .ls-dialog { padding: 40px 20px 20px; }
+  .cancellation-document-viewer { grid-template-columns: minmax(0, 1fr); }
+  .cancellation-document-selector { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cancellation-error { align-items: flex-start; flex-wrap: wrap; }
+  .cancellation-error .ls-btn { margin-left: 32px; }
+}
+
+@media (max-width: 390px) {
+  .cancellation-page .cancellation-request-panel { padding: 13px 11px; }
+  .cancellation-section { gap: 9px; }
+  .cancellation-icon-circle { flex-basis: 32px; width: 32px; height: 32px; }
+  .cancellation-icon-circle svg { width: 20px; height: 20px; }
+  .cancellation-page h2 { font-size: 16px; }
+  .cancellation-section-heading { gap: 7px; }
+  .cancellation-description { font-size: 12px; }
+  .cancellation-reason-box { padding: 10px 8px; }
+  .cancellation-reason-heading > span { font-size: 10px; }
+  .cancellation-page blockquote { font-size: 12px; }
+  .cancellation-quote-mark { flex-basis: 12px; font-size: 30px; }
+  .cancellation-quote-row { gap: 5px; }
+  .cancellation-page .cancellation-evidence-button { padding: 8px 7px; gap: 6px; font-size: 11px; }
+  .cancellation-page .cancellation-evidence-button svg { width: 16px; height: 16px; }
+  .cancellation-response-meta { font-size: 11px; }
+  .cancellation-page .cancellation-review-panel { padding: 13px 11px; }
+  .cancellation-review-panel .cancellation-section { gap: 9px; }
+  .cancellation-actions-grid { grid-template-columns: minmax(0, 1fr); }
+  .cancellation-action--upload { grid-column: auto; }
+  .cancellation-document-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+  .cancellation-documents-heading { align-items: flex-start; }
+  .cancellation-document-tile { min-height: 89px; }
+  .cancellation-demo-note { font-size: 10px; }
+  .cancellation-page .ls-dialog { width: calc(100% - 20px); padding: 40px 13px 16px; }
+  .cancellation-page .ls-dialog > h2 { font-size: 21px; }
+  .cancellation-modal { font-size: 13px; }
+  .cancellation-modal-actions { flex-direction: column; }
+  .cancellation-modal-actions .ls-btn { width: 100%; }
+  .cancellation-document-selector { grid-template-columns: minmax(0, 1fr); }
+  .cancellation-land-facts > div { grid-template-columns: minmax(0, 1fr); gap: 5px; }
+  .cancellation-file-list li { flex-wrap: wrap; }
+  .cancellation-file-list small { margin-left: 26px; }
+  .cancellation-modal-callout { padding: 11px; gap: 8px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cancellation-page *, .cancellation-page *::before, .cancellation-page *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+}

@@ -1,0 +1,125 @@
+.agreement-page { width: 100%; min-width: 0; }
+.agreement-page *, .agreement-modal-body * { box-sizing: border-box; }
+.agreement-columns { display: grid; grid-template-columns: minmax(0, 2.13fr) minmax(0, 1fr); gap: 18px; align-items: start; }
+.agreement-main-column, .agreement-sidebar, .agreement-draft-side { min-width: 0; }
+.agreement-main-column > .tx-land { background: #032750e8; border: 1px solid #164a82; border-radius: 11px; padding: 10px 12px; }
+.agreement-sidebar, .agreement-draft-side { display: grid; gap: 10px; }
+.agreement-tabs { display: flex; gap: 7px; margin: 12px 0 10px; }
+.agreement-tabs > button { flex: 1; min-width: 0; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 6px; font-size: 12px; border: 0; border-bottom: 3px solid transparent; color: #e4eeff; background: transparent; border-radius: 9px; cursor: pointer; }
+.agreement-tabs > button[aria-selected="true"] { background: linear-gradient(#005ca8, #003f8c); border-bottom-color: #00d7ff; box-shadow: 0 3px 9px #0082ff28; }
+.agreement-tabs svg { flex-shrink: 0; }
+.agreement-tab-panel { min-width: 0; }
+.agreement-tab-panel[hidden] { display: none; }
+.agreement-draft-grid { display: grid; grid-template-columns: minmax(0, 1.52fr) minmax(0, 1fr); gap: 10px; }
+.agreement-page .agreement-draft-panel { padding: 12px 12px 10px; }
+.agreement-draft-toolbar, .agreement-draft-title, .agreement-draft-actions, .agreement-card-heading { display: flex; align-items: center; gap: 8px; }
+.agreement-draft-toolbar { justify-content: space-between; flex-wrap: wrap; margin-bottom: 10px; }
+.agreement-draft-title { flex-wrap: wrap; }
+.agreement-page .agreement-draft-title h2 { margin: 0; font-size: 18px; }
+.agreement-page .agreement-draft-title .ls-badge { font-size: 10px; padding: 4px 7px; border-radius: 20px; }
+.agreement-page .agreement-small-button { min-height: 29px; padding: 5px 8px; font-size: 11px; gap: 5px; }
+.agreement-deed-viewer { display: grid; grid-template-columns: 67px minmax(0, 1fr); gap: 14px; align-items: start; }
+.agreement-thumbnails { display: grid; gap: 6px; }
+.agreement-thumbnails button { background: transparent; border: 0; color: #d7e8ff; padding: 0; font-size: 11px; cursor: pointer; min-width: 0; }
+.agreement-thumbnail-paper { display: block; height: 81px; overflow: hidden; background: #f2f2ed; border: 2px solid transparent; border-radius: 3px; margin-bottom: 3px; }
+.agreement-thumbnails .is-selected .agreement-thumbnail-paper { border-color: #00bdff; box-shadow: 0 0 8px #00b5ff88; }
+.agreement-deed-sheet { background: #e4e6e7; padding: 0 7px; border-radius: 2px; min-width: 0; box-shadow: inset 4px 0 #a2a6a7; }
+.agreement-deed { background: #f6f6f3; color: #111820; padding: 20px 18px; font-family: Arial, sans-serif; font-size: 10px; line-height: 1.45; min-width: 0; overflow-wrap: anywhere; }
+.agreement-draft-side { align-content: start; }
+@media (min-width: 1400px) { .agreement-deed:not(.agreement-deed--miniature) { padding: 14px 17px; font-size: 9px; line-height: 1.3; } .agreement-deed:not(.agreement-deed--miniature) p { margin-bottom: 7px; } .agreement-deed:not(.agreement-deed--miniature) h3 { margin: 8px 0; } .agreement-deed:not(.agreement-deed--miniature) h4 { margin: 10px 0 5px; } .agreement-deed:not(.agreement-deed--miniature) .agreement-deed__brand { margin-bottom: 7px; } }
+.agreement-deed__brand { display: flex; justify-content: center; align-items: center; gap: 5px; font-size: 9px; font-weight: bold; margin-bottom: 12px; text-align: center; }
+.agreement-deed__brand small { font-size: 6px; letter-spacing: .2px; }
+.agreement-deed__disclaimer { color: #795218; text-align: center; font-size: 7px; font-weight: bold; padding: 5px 0; border-block: 1px solid #b9a98b; }
+.agreement-deed h3 { color: #111820; text-align: center; font-size: 13px; margin: 12px 0; }
+.agreement-deed h4 { font-size: 10px; margin: 16px 0 7px; }
+.agreement-deed p { margin-bottom: 9px; }
+.agreement-deed__reference { text-align: center; font-size: 8px; }
+.agreement-deed__center { text-align: center; font-size: 8px; }
+.agreement-deed dl { margin: 0 0 11px; }
+.agreement-deed dl > div { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 6px; margin: 4px 0; }
+.agreement-deed dd { margin: 0; }
+.agreement-deed footer { border-top: 1px solid #bcc2c3; margin-top: 13px; padding-top: 6px; font-size: 7px; text-align: center; }
+.agreement-deed--miniature { font-size: 2px; padding: 4px; line-height: 1.4; pointer-events: none; }
+.agreement-deed--miniature .agreement-deed__brand { font-size: 3px; margin-bottom: 3px; }
+.agreement-deed--miniature .agreement-deed__brand svg { width: 8px; height: 8px; }
+.agreement-deed--miniature small, .agreement-deed--miniature .agreement-deed__disclaimer, .agreement-deed--miniature .agreement-deed__reference, .agreement-deed--miniature .agreement-deed__center { font-size: 2px; }
+.agreement-deed--miniature h3 { font-size: 3px; margin: 3px 0; }
+.agreement-deed--miniature h4 { font-size: 3px; margin: 3px 0; }
+.agreement-deed--miniature p { margin-bottom: 2px; }
+.agreement-deed--miniature dl > div { gap: 2px; margin: 1px 0; }
+.agreement-deed--miniature footer { font-size: 2px; margin-top: 2px; padding-top: 2px; }
+.agreement-preview-caption { font-size: 10px; margin: 8px 0 0; color: #bfd5eb; }
+.agreement-card-heading { justify-content: space-between; margin-bottom: 7px; }
+.agreement-page .agreement-card-heading h2 { font-size: 15px; margin: 0; }
+.agreement-page .agreement-text-button { border: 0; background: transparent; color: #39baff; padding: 1px; min-height: 22px; font-size: 11px; gap: 6px; }
+.agreement-term-list { margin: 0; }
+.agreement-term-list > div { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: 8px; align-items: center; padding: 5px 0; }
+.agreement-term-list dt { display: flex; align-items: center; gap: 7px; font-size: 11px; color: #c9d8ed; }
+.agreement-term-icon { display: grid; place-items: center; width: 25px; height: 25px; border-radius: 50%; flex-shrink: 0; }
+.agreement-term-icon--green { background: #00695899; color: #00efd2; }
+.agreement-term-icon--gold { background: #87603566; color: #ffdfb3; }
+.agreement-term-icon--blue { background: #0063d2; color: #b8d9ff; }
+.agreement-term-list dd { margin: 0; font-size: 11px; line-height: 1.45; }
+.agreement-term-list dd strong { font-weight: 600; }
+.agreement-term-list dd small { display: block; color: #c4d4e9; font-size: 10px; }
+.agreement-checklist ul { list-style: none; margin: 0; padding: 0; }
+.agreement-checklist li button { display: flex; gap: 7px; align-items: center; text-align: left; width: 100%; padding: 5px 0; color: #cfe1f3; background: transparent; border: 0; font-size: 11px; cursor: pointer; }
+.agreement-checklist li button > svg { margin-left: auto; transform: rotate(-90deg); flex-shrink: 0; }
+.agreement-check-dot { display: grid; place-items: center; width: 16px; height: 16px; border: 1px solid #b1cce9; border-radius: 50%; flex-shrink: 0; }
+.agreement-check-dot.is-complete { background: #04d4b7; color: #003a3d; border-color: #0be2c5; }
+.agreement-page .agreement-parties h2, .agreement-page .agreement-registration h2 { font-size: 17px; }
+.agreement-party-list { display: grid; gap: 12px; }
+.agreement-party { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.agreement-avatar { display: grid; place-items: center; width: 39px; height: 39px; border-radius: 50%; background: linear-gradient(140deg, #25a1ff, #849cff); flex-shrink: 0; font-size: 18px; }
+.agreement-party__name { flex: 1; min-width: 105px; font-size: 13px; }
+.agreement-party__name strong { font-weight: 500; }
+.agreement-party__name small { display: block; font-size: 11px; margin-top: 3px; }
+.agreement-party__date { color: #cfdaeb; font-size: 10px; }
+.agreement-page .agreement-party .ls-badge { font-size: 10px; padding: 7px; gap: 4px; }
+.agreement-confirmed-note { display: flex; align-items: center; gap: 12px; margin: 13px 0 0; padding: 10px; border: 1px solid #00867d; background: #005e5966; border-radius: 8px; font-size: 12px; line-height: 1.5; }
+.agreement-confirmed-note > span { display: grid; place-items: center; background: #00d5a8; color: #005953; width: 34px; height: 34px; border-radius: 10px; flex-shrink: 0; }
+.agreement-pending-note { border-top: 1px solid #245275; padding-top: 12px; margin-top: 12px; font-size: 12px; }
+.agreement-other-party { display: flex; gap: 6px; line-height: 1.5; margin-top: 12px; color: #ffd685; }
+.agreement-other-party svg { flex-shrink: 0; }
+.agreement-registration-status { display: flex; align-items: center; gap: 9px; color: #ffd04a; font-size: 13px; margin-bottom: 9px; }
+.agreement-registration-status > span { width: 38px; height: 38px; border-radius: 50%; background: #5d420a66; display: grid; place-items: center; }
+.agreement-registration-status--submitted { color: #44e8ca; }
+.agreement-registration p { font-size: 13px; color: #d2e0f3; line-height: 1.5; margin-bottom: 10px; }
+.agreement-registration-reason { color: #ffdc80 !important; }
+.agreement-page .agreement-submit-button { width: 100%; padding: 12px 8px; font-size: 15px; }
+.agreement-notice, .agreement-error { padding: 11px 14px; margin: 10px 0; border-radius: 8px; font-size: 13px; line-height: 1.5; }
+.agreement-notice { display: flex; align-items: flex-start; gap: 8px; border: 1px solid #00a899; background: #004e4f; color: #ddfffa; }
+.agreement-notice svg { flex-shrink: 0; }
+.agreement-error { border: 1px solid #ce627b; background: #4e213b; }
+.agreement-error p { margin-bottom: 8px; }
+.agreement-loading { text-align: center; padding: 35px !important; }
+.agreement-conditions { font-size: 14px; line-height: 1.6; margin-top: 20px; }
+.agreement-conditions li { margin-bottom: 10px; }
+.agreement-terms--expanded .agreement-term-list > div { border-bottom: 1px solid #235477; padding: 12px 0; }
+.agreement-terms--expanded .agreement-term-list dt, .agreement-terms--expanded .agreement-term-list dd { font-size: 14px; }
+.agreement-modal-content { min-width: 0; }
+.agreement-modal-note { padding: 12px; background: #0e3555; border-left: 3px solid #0ac5eb; font-size: 13px; line-height: 1.6; }
+.agreement-form-error { padding: 10px; border-radius: 6px; background: #5c2541; color: #ffd5df; font-size: 13px; }
+.agreement-modal-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 10px; margin-top: 20px; }
+.agreement-consent { display: flex !important; align-items: flex-start; font-size: 14px; line-height: 1.5; }
+.agreement-consent input { width: 20px !important; height: 20px; flex-shrink: 0; margin-top: 2px; }
+.agreement-detail-list { margin: 10px 0; font-size: 14px; }
+.agreement-detail-list > div { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 12px; padding: 11px 0; border-bottom: 1px solid #255274; }
+.agreement-detail-list dt { color: #bcd1e9; }
+.agreement-detail-list dd { margin: 0; overflow-wrap: anywhere; }
+.agreement-checklist-details { list-style: none; padding: 0; }
+.agreement-checklist-details li { padding: 14px 0; border-bottom: 1px solid #225079; }
+.agreement-checklist-details h3 { margin: 10px 0 5px; }
+.agreement-guide-list { padding-left: 20px; line-height: 1.65; }
+.agreement-guide-list li { margin-bottom: 14px; }
+.agreement-land-art { width: 100%; border-radius: 9px; margin-bottom: 14px; }
+.agreement-page .ls-dialog:has(.agreement-print) { width: min(780px, calc(100% - 24px)); }
+.agreement-print-toolbar { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 15px; }
+.agreement-print-toolbar p { width: 100%; margin-bottom: 0; font-size: 13px; }
+.agreement-print .agreement-deed { margin-bottom: 15px; font-size: 13px; padding: 28px; }
+.agreement-print .agreement-deed h3 { font-size: 20px; }
+.agreement-print .agreement-deed h4 { font-size: 14px; }
+@media (max-width: 1399px) { .agreement-columns { grid-template-columns: minmax(0, 1.9fr) minmax(0, 1fr); gap: 12px; } .agreement-draft-grid { grid-template-columns: minmax(0, 1fr); } .agreement-draft-side { grid-template-columns: repeat(2, minmax(0, 1fr)); } .agreement-tabs { flex-wrap: wrap; gap: 5px; } .agreement-tabs button { flex-basis: calc(50% - 5px); } .agreement-deed { font-size: 12px; } .agreement-deed--miniature { font-size: 2px; } .agreement-party__date { flex-basis: 100%; padding-left: 49px; } }
+@media (max-width: 1000px) { .agreement-columns { grid-template-columns: minmax(0, 1fr); } .agreement-sidebar { grid-template-columns: repeat(2, minmax(0, 1fr)); } .agreement-sidebar > .tx-help { grid-column: 1 / -1; } .agreement-draft-grid { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); } .agreement-draft-side { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 760px) { .agreement-sidebar, .agreement-draft-grid, .agreement-draft-side { grid-template-columns: minmax(0, 1fr); } .agreement-tabs button { font-size: 11px; padding: 10px 6px; } .agreement-deed-viewer { grid-template-columns: 49px minmax(0, 1fr); gap: 8px; } .agreement-thumbnail-paper { height: 70px; } .agreement-deed { padding: 16px 11px; font-size: 10px; } .agreement-deed--miniature { padding: 3px; font-size: 2px; } .agreement-deed h3 { font-size: 12px; } .agreement-deed--miniature h3 { font-size: 3px; } .agreement-draft-toolbar { align-items: flex-start; } .agreement-draft-title h2 { font-size: 16px !important; } .agreement-party__date { flex-basis: auto; padding-left: 0; } .agreement-term-list dt, .agreement-term-list dd { font-size: 12px; } .agreement-detail-list > div { grid-template-columns: minmax(0, 1fr); gap: 5px; } .agreement-print .agreement-deed { padding: 15px; font-size: 11px; } .agreement-modal-actions { flex-direction: column; } .agreement-modal-actions .ls-btn { width: 100%; } }
+@media print { body:has(.agreement-print) { background: white; } body:has(.agreement-print) * { visibility: hidden; } .agreement-print, .agreement-print * { visibility: visible !important; } .agreement-page .ls-dialog:has(.agreement-print) { position: absolute; inset: 0; display: block; width: 100%; max-height: none; overflow: visible; border: 0; margin: 0; padding: 0; background: white; box-shadow: none; } .agreement-print-toolbar, .agreement-print-hide, .agreement-print-toolbar * { display: none !important; } .agreement-print .agreement-deed { break-after: page; margin: 0; box-shadow: none; font-size: 12pt; } .agreement-print .agreement-deed:last-child { break-after: auto; } }

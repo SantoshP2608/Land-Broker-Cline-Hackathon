@@ -7,13 +7,18 @@ const server = await createServer({ server: { host: '127.0.0.1', port: 5180, str
 let browser;
 try {
   await server.listen();
-  browser = await chromium.launch({ channel: 'msedge', headless: true });
+  browser = await chromium.launch({ channel: 'msedge', headless: true, args: ['--disable-extensions'] });
   const page = await browser.newPage();
-  const errors = [], mutations = [];
-  page.on('pageerror', error => errors.push(error.message));
-  page.on('request', request => { if (request.method() !== 'GET') mutations.push(request.url()); });
-  await mkdir(new URL('../artifacts/', import.meta.url), { recursive: true });
+  const errors = [], mutations = [], externalMutations = [];
   const base = 'http://127.0.0.1:5180/';
+  page.on('pageerror', error => errors.push(error.message));
+  page.on('request', request => {
+    if (request.method() === 'GET') return;
+    // System-installed Edge filtering can inject unrelated external traffic even
+    // with extensions disabled. Keep it visible, separate from app mutations.
+    (new URL(request.url()).origin === new URL(base).origin ? mutations : externalMutations).push(request.url());
+  });
+  await mkdir(new URL('../artifacts/', import.meta.url), { recursive: true });
   const button = name => page.getByRole('button', { name, exact: true });
   const field = name => page.getByLabel(name, { exact: true });
   const status = text => page.getByRole('status').filter({ hasText: text }).waitFor();
@@ -83,5 +88,6 @@ try {
   await page.reload(); await field('Full name').waitFor();
   assert.equal(await field('Full name').inputValue(), 'Santosh Pabolu');
   assert.deepEqual(mutations, []); assert.deepEqual(errors, []);
-  console.log('PASS routes, login/register, context, passwords, file validation, draft, review/edit, clearing, no storage/network mutations/runtime errors');
+  if (externalMutations.length) console.log(`ENVIRONMENT NOTICE: ${externalMutations.length} external non-GET requests from browser filtering, outside the application origin: ${[...new Set(externalMutations)].join(', ')}`);
+  console.log('PASS routes, login/register, context, passwords, file validation, draft, review/edit, clearing, no storage/application-origin mutations/runtime errors');
 } finally { await browser?.close(); await server.close(); }
