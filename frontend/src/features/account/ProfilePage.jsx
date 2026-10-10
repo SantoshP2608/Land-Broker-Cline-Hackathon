@@ -73,4 +73,3 @@ export default function ProfilePage({ account, journey, onJourneyChange, onSignO
     <dialog ref={reviewRef} className="home-preview-dialog profile-review" aria-labelledby="review-title"><form method="dialog"><button className="home-preview-dialog__close" aria-label="Close review">×</button></form><h2 id="review-title">Review sample submission</h2><p>Confirm these demo details before finishing the local preview.</p><dl><dt>Name</dt><dd>{details.name}</dd><dt>Email</dt><dd>{details.email}</dd><dt>Document type</dt><dd>{documentType}</dd><dt>Sample evidence</dt><dd>{file?.name}</dd></dl><p>No document will be uploaded and no reviewer decision will be issued. Identity remains unverified.</p><div className="profile-form-actions"><button className="account-button" onClick={() => reviewRef.current.close()}>Back to edit</button><button className="account-button account-button--primary" onClick={completePreview}>Finish demo preview</button></div></dialog>
   </div>;
 }
-
