@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Badge, Button, Icon, Modal } from '../seller/SellerUI.jsx';
-import '../seller/SellerLayout.css';
+import '../seller/ReviewSellerLayout.css';
 import './TransactionLayout.css';
 
 const sidebar = [['home', 'Dashboard', '/buyer/dashboard'], ['search', 'Browse Lands', '/marketplace'], ['file', 'My Requests', '/buyer/requests'], ['file', 'Transactions', '/transactions'], ['user', 'Profile', '/profile'], ['edit', 'Settings', '/settings']];

@@ -20,6 +20,12 @@ try {
     await heading(title);
     console.log(`PASS integrated direct route ${path}`);
   }
+  for (const [route, selector] of [['/#seller-dashboard', '.dashboard-hero'], ['/#seller-list-land', '.list-land-hero'], ['/#marketplace', '.marketplace-hero'], ['/#land-land-1', '.detail-layout'], ['/#outcome', '.outcome-heading'], ['/#reviewer', '.officer-title'], ['/#registrar', '.officer-title']]) {
+    await page.goto(`${base}${route}`);
+    await page.locator(selector).waitFor();
+    assert.ok((await page.getByRole('heading', { level: 1 }).first().textContent()).trim());
+    console.log(`PASS preserved teammate route ${route}`);
+  }
   await page.goto(base);
   await page.getByRole('button', { name: 'About', exact: true }).click();
   await page.getByRole('button', { name: 'Open page 12 · Agreement preparation', exact: true }).click();

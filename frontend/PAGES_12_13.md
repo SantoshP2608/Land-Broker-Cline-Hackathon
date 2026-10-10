@@ -55,11 +55,13 @@ The actual OpenAPI contract in `D:\Cline_AI_CodeAlchemists\Final_code\contracts\
 
 Before connecting these screens, map real authorised transaction/party/parcel/document DTOs, UUIDs and `allowed_actions`; use authenticated cookie sessions, real session CSRF, expected transaction/draft versions and command idempotency keys; use private session-bound document delivery; handle conflicts/uncertain outcomes and require a fresh deliberate action. Do not submit synthetic TRX/DRAFT/E IDs. Price-per-acre, payment/escrow and fixture Telangana details must not be assumed to match the Karnataka backend model. Only authorised officers may decide cases or complete registration.
 
-Authenticated live-backend integration is not implemented or claimed for pages 12/13. Pages 4–5 remain unavailable. Publishing integration preserves teammates' account/profile pages and is performed only following the user's explicit pull/push request.
+Authenticated live-backend integration is not implemented or claimed for pages 12/13. Publishing integration preserves teammates' account/profile, seller dashboard/wizard, buyer marketplace/detail and officer/outcome pages and is performed only following the user's explicit pull/push request. The publishing transaction layout imports `ReviewSellerLayout.css` for shared controls; teammates' `SellerLayout` is retained independently.
 
 ## Validation and assets
 
 ### Combined publishing-checkout validation
+
+Final concurrent-update merge: pulled three additional teammate commits for seller dashboard/wizard, buyer marketplace/detail and outcome/officer pages. Kept teammates' `SellerLayout` unchanged and namespaced the local review/request chrome as `ReviewSellerLayout`. Fixed the newly pulled officer component's missing React import, found by a real-browser runtime failure. The final merged frontend passes **65 automated tests**, production build, all five browser check scripts, and explicit navigation to all seven newly pulled teammate routes. Final merged browser logs contain 8 homepage, 8 account, 15 seller, 17 transaction and 16 integrated PASS entries with empty error logs. This supersedes the earlier 54-test publishing snapshot below.
 
 After pulling teammates' account/profile implementation and integrating the local seller/transaction pages, the publishing checkout passed **54 automated tests**, the production build, and homepage, account, seller, transaction and integrated-navigation Edge checks. Responsive coverage includes 320–1600px. The integrated check verifies direct routes, preserved homepage sign-in/demo entry, account-to-transaction links, browser back/forward and retained account details.
 

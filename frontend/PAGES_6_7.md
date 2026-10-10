@@ -1,6 +1,6 @@
 # Seller pages 6 and 7 — local handoff
 
-Originally implemented in `D:\Cline_AI_CodeAlchemists\Final_code\frontend`; integrated for publication in `D:\Cline_AI_CodeAlchemists\publish-Land-Broker-Cline-Hackathon\frontend`. Existing homepage and teammates' account/profile pages are preserved. Pages 4–5 remain outside this implementation.
+Originally implemented in `D:\Cline_AI_CodeAlchemists\Final_code\frontend`; integrated for publication in `D:\Cline_AI_CodeAlchemists\publish-Land-Broker-Cline-Hackathon\frontend`. Existing homepage and teammates' account/profile, seller dashboard/wizard, buyer and officer/outcome pages are preserved. The publishing copy uses `ReviewSellerLayout.jsx` and `ReviewSellerLayout.css` with namespaced chrome so teammates' `SellerLayout` remains independent.
 
 ## Run
 

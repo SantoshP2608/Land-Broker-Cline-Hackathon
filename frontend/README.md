@@ -1,6 +1,6 @@
 # LandShield frontend
 
-React + JSX + Vite implementation of the supplied homepage, login/register, profile/identity-verification, seller, agreement and cancellation designs. Account and transaction pages are local demos. Seller pages default to demo and expose an explicit API mode with documented integration limitations.
+React + JSX + Vite implementation of the supplied homepage, account/profile, seller dashboard/listing wizard, listing review/buyer requests, marketplace/land detail, agreement/cancellation, and outcome/officer designs. Account and transaction pages are local demos. Seller review/request pages default to demo and expose an explicit API mode with documented integration limitations.
 
 ## Run locally
 
@@ -27,6 +27,8 @@ Open the URL printed by Vite (normally http://127.0.0.1:5173).
 - `/page-6`: listing verification/management; `/page-7`: buyer requests. See [PAGES_6_7.md](PAGES_6_7.md) for the explicit API configuration and eligibility boundaries.
 - `/page-12`: agreement/registration preparation; `/page-13`: cancellation/hold resolution. See [PAGES_12_13.md](PAGES_12_13.md) for local interactions and backend boundaries. Both are independent synthetic fixtures; they never perform payments, registration or ownership transfer.
 - `/transactions` provides a local transaction-stage chooser. About and the account Transactions preview dialog link to the seller and transaction pages. Account demo continuation is not a backend session and does not authorise seller API commands.
+- Teammates' `#seller-dashboard`, `#seller-list-land`, `#marketplace`, `#land-{id}`, `#outcome`, `#reviewer`, and `#registrar` routes remain available. `/page-4`, `/page-5`, `/page-14`, `/page-15`, and `/page-16` also expose their corresponding previews. All are synthetic, not live approvals or registration.
+- Seller dashboard/wizard retain `SellerLayout`; listing review/buyer requests use namespaced `ReviewSellerLayout` to avoid component and CSS collisions. Transaction shared controls import `ReviewSellerLayout.css`.
 - No new runtime libraries, external fonts, or icon dependencies.
 
 ## Validation

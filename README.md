@@ -1,6 +1,6 @@
 # Land Broker — Cline Hackathon
 
-## Frontend — pages 1–3, 6–7 and 12–13
+## Frontend — integrated local page previews
 
 The LandShield homepage is implemented in `frontend/` using React and Vite. It includes the responsive hero, property-verification artwork, feature highlights, and desktop/mobile navigation without branding.
 
@@ -26,6 +26,8 @@ Pages 2 and 3 add responsive login/register (`#signin`) and profile/identity evi
 Pages 6 and 7 add listing verification/management and buyer requests at `/page-6` and `/page-7`. They default to local demo; explicit seller API mode is documented in [frontend/PAGES_6_7.md](frontend/PAGES_6_7.md) and still requires an actual authenticated backend session and authorised eligibility data.
 
 Pages 12 and 13 add agreement/registration preparation and cancellation/hold resolution at `/page-12` and `/page-13`. They are independent local synthetic previews, with no live backend commands, payments, government registration or ownership transfer. See [frontend/PAGES_12_13.md](frontend/PAGES_12_13.md). Existing homepage and account pages are preserved.
+
+Teammates' seller dashboard/listing wizard, buyer marketplace/land detail, and outcome/reviewer/registrar pages are also preserved at their hash routes. See [frontend/README.md](frontend/README.md) for the combined routing and local-demo boundaries. No page grants real review authority or performs government registration.
 
 ## Synthetic marketplace backend
 
