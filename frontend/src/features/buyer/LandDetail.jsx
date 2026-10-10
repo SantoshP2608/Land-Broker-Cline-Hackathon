@@ -13,7 +13,7 @@ const VERIFICATION_ITEMS = [
   { key: 'zoning', label: 'Land Use & Zoning', status: 'Valid' },
 ];
 
-export default function LandDetail({ id, account, onSignIn, onSwitchToSelling, onGoHome, onProfile, onBack, saved, onToggleSave }) {
+export default function LandDetail({ id, account, onSignIn, onSwitchToSelling, onGoHome, onProfile, onBack, saved, onToggleSave, onNavigate }) {
   const listing = LISTINGS.find((item) => item.id === id) || LISTINGS[0];
   const [photoIndex, setPhotoIndex] = useState(0);
   const [shareMessage, setShareMessage] = useState('');
@@ -45,7 +45,7 @@ export default function LandDetail({ id, account, onSignIn, onSwitchToSelling, o
   }
 
   return (
-    <BuyerLayout active="marketplace" onNavigate={() => {}} onSwitchToSelling={onSwitchToSelling} onGoHome={onGoHome} onProfile={onProfile} account={account} onSignIn={onSignIn}>
+    <BuyerLayout active="marketplace" onNavigate={onNavigate} onSwitchToSelling={onSwitchToSelling} onGoHome={onGoHome} onProfile={onProfile} account={account} onSignIn={onSignIn}>
       <button type="button" className="detail-back" onClick={onBack}><Icon kind="back" /> Back to Listings</button>
 
       <div className="detail-layout">

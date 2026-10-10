@@ -62,3 +62,8 @@ uv run --locked python -m scripts.export_openapi
 Use backend-derived `availability`, `allowed_actions`, versions and `blocked_reason`. Acceptance reserves one buyer; cancellation requests do not release land, and agreement/registration submission does not complete a transfer. The SDK helper does not gain approval, ownership or lock-release powers.
 
 Original planning information packs remain in the development workspace; this commit does not upload the supplied PDF/screenshots, database folders, private evidence or generated sample documents. Synthetic samples can be regenerated through the documented scripts.
+
+## Buyer pages 10 and 11
+
+Buyer dashboard and transaction workspace are available at /page-10 and /page-11. See [setup and integration boundaries](frontend/PAGES_10_11.md). Includes request filters, evidence summaries, decision gating, cancellation holds and responsive navigation. This is an interactive local demo; full backend wiring remains outstanding.
+

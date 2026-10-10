@@ -81,7 +81,7 @@ function ListingRow({ listing, saved, onToggleSave, onOpen }) {
   );
 }
 
-export default function Marketplace({ account, onSignIn, onSwitchToSelling, onGoHome, onProfile, onOpenListing, savedIds, onToggleSave }) {
+export default function Marketplace({ account, onSignIn, onSwitchToSelling, onGoHome, onProfile, onOpenListing, savedIds, onToggleSave, onNavigate }) {
   const [keyword, setKeyword] = useState('');
   const [type, setType] = useState('All Types');
   const [price, setPrice] = useState('Any');
@@ -118,7 +118,7 @@ export default function Marketplace({ account, onSignIn, onSwitchToSelling, onGo
   }
 
   return (
-    <BuyerLayout active="marketplace" onNavigate={() => {}} onSwitchToSelling={onSwitchToSelling} onGoHome={onGoHome} onProfile={onProfile} account={account} onSignIn={onSignIn}>
+    <BuyerLayout active="marketplace" onNavigate={onNavigate} onSwitchToSelling={onSwitchToSelling} onGoHome={onGoHome} onProfile={onProfile} account={account} onSignIn={onSignIn}>
       <section className="marketplace-hero">
         <h1>Find <span className="marketplace-hero__accent">Verified</span> Lands</h1>
         <p>Explore genuine and verified land listings with complete document checks and transparent details.</p>

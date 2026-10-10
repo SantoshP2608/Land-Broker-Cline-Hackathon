@@ -7,6 +7,8 @@ import ReviewSellerLayout from '../features/seller/ReviewSellerLayout.jsx';
 import SellerDashboard from '../features/seller/SellerDashboard.jsx';
 import ListLandForm from '../features/seller/ListLandForm.jsx';
 import BuyerPages from '../features/buyer/BuyerPages.jsx';
+import BuyerWorkspace from '../features/buyer/BuyerWorkspace.jsx';
+import { createBuyerWorkspaceService } from '../features/buyer/buyer-workspace-service.mjs';
 import OutcomePage from '../features/outcome/OutcomePage.jsx';
 import OfficerPage from '../features/officer/OfficerPage.jsx';
 import ListingManagement from '../features/seller/ListingManagement.jsx';
@@ -56,6 +58,7 @@ export default function App() {
   const [service] = useState(() => createSellerService({ mode: sellerMode, baseUrl: import.meta.env.VITE_API_BASE_URL || '' }));
   const [transactionService] = useState(() => createTransactionService({ mode: 'demo' }));
   const [account, setAccount] = useState(null);
+  const [buyerService] = useState(() => createBuyerWorkspaceService());
   const [journey, setJourney] = useState('buying');
   useEffect(() => {
     function updateRoute() { setPath(window.location.pathname); setPage(currentPage()); }
@@ -83,6 +86,9 @@ export default function App() {
   }
   function continueDemo(details) { setAccount(details); navigate('/#profile'); }
   function signOut() { setAccount(null); setJourney('buying'); navigate('/#signin'); }
+  const buyerDashboard = ['/page-10', '/buyer/dashboard', '/buyer/requests'].includes(path);
+  const buyerWorkspace = ['/page-11', '/buyer/transactions/TX-2048', '/transactions', '/transactions/TX-2048'].includes(path);
+  if (buyerDashboard || buyerWorkspace) return <BuyerWorkspace key={buyerWorkspace ? 'workspace' : 'dashboard'} workspace={buyerWorkspace} requestsOnly={path === '/buyer/requests'} service={buyerService} account={account} onNavigate={navigate} />;
   const agreementPage = path === '/page-12' || path === '/transactions/TRX-2025-1043/agreement';
   const cancellationPage = path === '/page-13' || path === '/transactions/TRX-2025-1043/cancellation';
   if (agreementPage || cancellationPage || path === '/transactions' || path === '/transactions/TRX-2025-1043') {
@@ -101,7 +107,7 @@ export default function App() {
   const [title, description] = panels[panel] || panels.help;
   const sellerProps = { onGoHome: () => navigate('/#home'), onSwitchToBuying: () => { setJourney('buying'); navigate('/#marketplace'); }, onNavigate: key => { if (key === 'dashboard') navigate('/#seller-dashboard'); else if (key === 'listings') navigate('/#seller-list-land'); else if (key === 'requests') navigate('/page-7'); else if (key === 'profile') navigate('/#profile'); else openPanel(key); } };
   return <>
-    {page === 'outcome' ? <OutcomePage /> : page === 'reviewer' || page === 'registrar' ? <OfficerPage key={page} role={page} /> : page === 'seller-dashboard' ? <SellerDashboard {...sellerProps} onListMyLand={() => navigate('/#seller-list-land')} /> : page === 'seller-list-land' ? <ListLandForm {...sellerProps} onCancel={() => navigate('/#seller-dashboard')} /> : page === 'buyer' ? <BuyerPages account={account} onSignIn={() => navigate('/#signin')} onSwitchToSelling={() => { setJourney('selling'); navigate('/#seller-dashboard'); }} onGoHome={() => navigate('/#home')} onProfile={() => navigate('/#profile')} onOpenPanel={openPanel} /> : page === 'home' ? <>
+    {page === 'outcome' ? <OutcomePage /> : page === 'reviewer' || page === 'registrar' ? <OfficerPage key={page} role={page} /> : page === 'seller-dashboard' ? <SellerDashboard {...sellerProps} onListMyLand={() => navigate('/#seller-list-land')} /> : page === 'seller-list-land' ? <ListLandForm {...sellerProps} onCancel={() => navigate('/#seller-dashboard')} /> : page === 'buyer' ? <BuyerPages account={account} onSignIn={() => navigate('/#signin')} onSwitchToSelling={() => { setJourney('selling'); navigate('/#seller-dashboard'); }} onGoHome={() => navigate('/#home')} onProfile={() => navigate('/#profile')} onOpenPanel={openPanel} onNavigate={navigate} /> : page === 'home' ? <>
       <Navbar onOpenPanel={openPanel} />
       <a href="#marketplace" style={{position: 'absolute', top: 90, right: 30, zIndex: 11, color: '#6be0d4'}}>Browse lands without signing in →</a>
       <main id="home"><HomeLeft backgroundImage="/assets/Main-hero.png" featureIcons={{ trusted: '/assets/assurance.png', extraction: '/assets/ai-verf.png', comparison: '/assets/doc-search.png', transparency: '/assets/human-shield.png' }} onTryDemo={() => openPanel('demo')} onWatchHowItWorks={() => openPanel('workflow')} /></main>

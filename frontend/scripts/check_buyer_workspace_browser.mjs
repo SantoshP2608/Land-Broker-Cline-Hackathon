@@ -1,0 +1,34 @@
+import assert from 'node:assert/strict';
+import { createServer } from 'vite';
+import { chromium } from 'playwright';
+const server = await createServer({server:{host:'127.0.0.1',port:5193,strictPort:true}});
+let browser;
+try {
+ await server.listen(); browser = await chromium.launch({channel:'msedge',headless:true});
+ const p=await browser.newPage({viewport:{width:1600,height:1000}}); const errors=[]; p.on('pageerror',e=>errors.push(e.message));
+ await p.goto('http://127.0.0.1:5193/page-10');
+ await p.getByRole('heading',{name:'Welcome back, Kushwanth'}).waitFor();
+ await p.getByRole('button',{name:'Pending (2)',exact:true}).click(); assert.equal(await p.locator('.bw-request').count(),2);
+ await p.getByRole('button',{name:'All (4)',exact:true}).click();
+ await p.screenshot({path:'../../page-10-preview.png',fullPage:true});
+ await p.getByRole('button',{name:'Open workspace',exact:true}).click();
+ await p.getByRole('heading',{name:'Transaction Workspace'}).waitFor();
+ assert.equal(await p.getByRole('button',{name:'Open agreement',exact:true}).isDisabled(),true);
+ await p.getByRole('button',{name:'Proceed to agreement',exact:true}).click();
+ assert.equal(await p.getByRole('button',{name:'Open agreement',exact:true}).isDisabled(),false);
+ await p.screenshot({path:'../../page-11-preview.png',fullPage:true});
+ await p.getByRole('button',{name:'Request cancellation',exact:false}).click();
+ await p.getByLabel('Reason for cancellation').fill('Survey area requires review');
+ await p.getByRole('button',{name:'Submit cancellation request'}).click();
+ await p.getByText('Cancellation review is open.',{exact:true}).waitFor();
+ assert.equal(await p.getByRole('button',{name:'Open agreement',exact:true}).isDisabled(),true);
+ await p.getByRole('button',{name:'Buyer dashboard',exact:true}).click();
+ await p.getByText('On hold · cancellation review',{exact:true}).waitFor();
+ await p.setViewportSize({width:390,height:844});
+ assert.ok(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
+ await p.getByRole('button',{name:'Continue transaction',exact:true}).click();
+ assert.ok(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
+ await p.getByRole('button',{name:'View',exact:true}).first().click();
+ await p.getByRole('dialog').waitFor(); await p.keyboard.press('Escape');
+ assert.deepEqual(errors,[]); console.log('PASS desktop/mobile, filters, navigation, agreement gate, hold, state retention, evidence modal; no runtime errors');
+} finally {await browser?.close();await server.close();}

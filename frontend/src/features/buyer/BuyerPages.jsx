@@ -17,7 +17,7 @@ function readRoute() {
  * Shared buyer shell: listens to #marketplace / #land-{id} hash routes and renders the
  * appropriate buyer page. No backend is connected — all listing data is synthetic/demo-only.
  */
-export default function BuyerPages({ account, onSignIn, onSwitchToSelling, onGoHome, onProfile, onOpenPanel }) {
+export default function BuyerPages({ account, onSignIn, onSwitchToSelling, onGoHome, onProfile, onOpenPanel, onNavigate }) {
   const [route, setRoute] = useState(readRoute);
   const [savedIds, setSavedIds] = useState(() => new Set());
 
@@ -38,7 +38,7 @@ export default function BuyerPages({ account, onSignIn, onSwitchToSelling, onGoH
     });
   }
 
-  const shared = { account, onSignIn, onSwitchToSelling, onGoHome, onProfile, onOpenPanel };
+  const shared = { account, onSignIn, onSwitchToSelling, onGoHome, onProfile, onOpenPanel, onNavigate: key => { const routes = { dashboard: '/buyer/dashboard', requests: '/buyer/requests', transactions: '/buyer/transactions/TX-2048', marketplace: '/marketplace', settings: '/profile' }; if (onNavigate) onNavigate(routes[key] || '/buyer/dashboard'); } };
 
   if (route.page === 'land') {
     return (
