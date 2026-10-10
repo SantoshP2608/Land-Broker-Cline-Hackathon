@@ -6,3 +6,21 @@ __pycache__/
 .env
 .env.*
 !.env.example
+
+# Backend local environments and generated artifacts (existing tracked .venv
+# remains committed as explicitly requested; this prevents new local additions).
+backend/.venv/
+backend/.pytest_cache/
+backend/.ruff_cache/
+backend/.wheels/
+**/__pycache__/
+*.py[cod]
+.demo-postgres/
+.private-storage/
+.test-storage/
+.demo-documents/
+backend/.sdk-runtime/
+backend/ai_worker/.sdk*-inspect/
+backend/ai_worker/*.tgz
+backend/sdk-audit.json
+backend/sdk-outdated.json
