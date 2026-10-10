@@ -5,6 +5,7 @@ import AuthPage from '../features/account/AuthPage.jsx';
 import ProfilePage from '../features/account/ProfilePage.jsx';
 import SellerDashboard from '../features/seller/SellerDashboard.jsx';
 import ListLandForm from '../features/seller/ListLandForm.jsx';
+import BuyerPages from '../features/buyer/BuyerPages.jsx';
 import '../features/account/account.css';
 import './App.css';
 
@@ -20,6 +21,7 @@ const panels = {
   settings: ['Settings preview', 'Account settings are not integrated yet. You can switch buying/selling context from the header or sign out to clear the demo session.'],
 };
 function currentPage() {
+  if (window.location.hash === '#marketplace' || window.location.hash.startsWith('#land-')) return 'buyer';
   if (window.location.hash === '#seller-dashboard') return 'seller-dashboard';
   if (window.location.hash === '#seller-list-land') return 'seller-list-land';
   return window.location.hash === '#signin' ? 'signin' : window.location.hash === '#profile' ? 'profile' : 'home';
@@ -36,11 +38,12 @@ export default function App() {
     return () => window.removeEventListener('hashchange', navigate);
   }, []);
   useEffect(() => {
-    document.title = `${page === 'home' ? 'Property document review' : page === 'signin' ? 'Sign in' : 'Profile & Identity Verification'} | LandShield`;
+    document.title = `${({home: 'Property document review', signin: 'Sign in', profile: 'Profile & Identity Verification', buyer: 'Browse lands', 'seller-dashboard': 'Seller dashboard', 'seller-list-land': 'List your land'})[page]} | LandShield`;
     if (page !== 'home') window.scrollTo(0, 0);
   }, [page]);
   function openPanel(nextPanel) {
     if (nextPanel === 'marketplace' && journey === 'selling') { window.location.hash = 'seller-dashboard'; return; }
+    if (nextPanel === 'marketplace') { window.location.hash = 'marketplace'; return; }
     if (nextPanel === 'demo' || nextPanel === 'signin') { window.location.hash = 'signin'; return; }
     setPanel(nextPanel);
     dialogRef.current.showModal();
@@ -48,11 +51,12 @@ export default function App() {
   function continueDemo(details) { setAccount(details); window.location.hash = 'profile'; }
   function signOut() { setAccount(null); setJourney('buying'); window.location.hash = 'signin'; }
   const [title, description] = panels[panel] || panels.help;
-  const sellerProps = { onGoHome: () => { window.location.hash = 'home'; }, onSwitchToBuying: () => { setJourney('buying'); window.location.hash = 'profile'; }, onNavigate: (key) => { if (key === 'dashboard') window.location.hash = 'seller-dashboard'; else if (key === 'listings') window.location.hash = 'seller-list-land'; else if (key === 'profile') window.location.hash = 'profile'; else openPanel(key); } };
+  const sellerProps = { onGoHome: () => { window.location.hash = 'home'; }, onSwitchToBuying: () => { setJourney('buying'); window.location.hash = 'marketplace'; }, onNavigate: (key) => { if (key === 'dashboard') window.location.hash = 'seller-dashboard'; else if (key === 'listings') window.location.hash = 'seller-list-land'; else if (key === 'profile') window.location.hash = 'profile'; else openPanel(key); } };
   return <>
     {page === 'seller-dashboard' ? <SellerDashboard {...sellerProps} onListMyLand={() => { window.location.hash = 'seller-list-land'; }} /> : page === 'seller-list-land' ? <ListLandForm {...sellerProps} onCancel={() => { window.location.hash = 'seller-dashboard'; }} /> :
-    {page === 'home' ? <>
+    page === 'buyer' ? <BuyerPages account={account} onSignIn={() => { window.location.hash = 'signin'; }} onSwitchToSelling={() => { setJourney('selling'); window.location.hash = 'seller-dashboard'; }} onGoHome={() => { window.location.hash = 'home'; }} onProfile={() => { window.location.hash = 'profile'; }} onOpenPanel={openPanel} /> : page === 'home' ? <>
       <Navbar onOpenPanel={openPanel} />
+      <a href="#marketplace" style={{position: 'absolute', top: 90, right: 30, zIndex: 11, color: '#6be0d4'}}>Browse lands without signing in →</a>
       <main id="home"><HomeLeft backgroundImage="/assets/Main-hero.png" featureIcons={{ trusted: '/assets/assurance.png', extraction: '/assets/ai-verf.png', comparison: '/assets/doc-search.png', transparency: '/assets/human-shield.png' }} onTryDemo={() => openPanel('demo')} onWatchHowItWorks={() => openPanel('workflow')} /></main>
     </> : page === 'signin' ? <AuthPage onContinue={continueDemo} journey={journey} onJourneyChange={setJourney} onOpenPanel={openPanel} /> : <ProfilePage account={account} journey={journey} onJourneyChange={setJourney} onSignOut={signOut} onOpenPanel={openPanel} />}
     <dialog ref={dialogRef} className="home-preview-dialog" aria-labelledby="preview-title">

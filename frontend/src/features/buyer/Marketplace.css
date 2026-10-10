@@ -1,0 +1,90 @@
+.marketplace-hero { margin-bottom: 28px; }
+.marketplace-hero h1 { margin: 0 0 8px; font-size: clamp(26px, 4vw, 36px); font-weight: 800; }
+.marketplace-hero__accent { color: #46d4ff; }
+.marketplace-hero p { margin: 0 0 20px; color: #a9c0da; max-width: 640px; }
+
+.marketplace-search { display: flex; align-items: center; gap: 10px; padding: 10px 16px; border-radius: 12px; background: #06274a; border: 1px solid #1d3c5e; margin-bottom: 16px; }
+.marketplace-search svg { width: 20px; height: 20px; color: #7fa1c6; flex-shrink: 0; }
+.marketplace-search input { flex: 1; background: transparent; border: 0; color: #f6f9ff; font: inherit; font-size: 15px; }
+.marketplace-search input:focus { outline: none; }
+.marketplace-search button { padding: 10px 22px; border: 0; border-radius: 9px; background: linear-gradient(105deg, #009dff, #0349ff); color: #fff; font: inherit; font-weight: 650; cursor: pointer; }
+
+.marketplace-filters { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end; }
+.marketplace-filter { display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: #8fa8c6; }
+.marketplace-filter select { padding: 9px 12px; border-radius: 9px; border: 1px solid #1d3c5e; background: #06274a; color: #f6f9ff; font: inherit; font-size: 14px; min-width: 140px; }
+.marketplace-more-filters, .marketplace-reset {
+  display: flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 9px; border: 1px solid #1d3c5e;
+  background: #06274a; color: #8fd8ff; font: inherit; font-weight: 600; font-size: 14px; cursor: pointer;
+}
+.marketplace-more-filters svg { width: 16px; height: 16px; }
+.marketplace-reset { color: #b9cbe2; }
+.marketplace-more-panel { margin-top: 12px; padding: 14px 16px; border-radius: 10px; background: #06274a; border: 1px dashed #335a82; color: #a9c0da; font-size: 13px; }
+
+.marketplace-results__head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 14px; margin: 28px 0 18px; }
+.marketplace-results__head h2 { margin: 0; font-size: 20px; }
+.marketplace-results__controls { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.marketplace-sort { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #8fa8c6; }
+.marketplace-sort select { padding: 8px 10px; border-radius: 8px; border: 1px solid #1d3c5e; background: #06274a; color: #f6f9ff; font: inherit; }
+.marketplace-toggle { display: flex; border: 1px solid #1d3c5e; border-radius: 9px; overflow: hidden; }
+.marketplace-toggle button { display: flex; align-items: center; gap: 6px; padding: 9px 14px; border: 0; background: #06274a; color: #b9cbe2; font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; }
+.marketplace-toggle button svg { width: 15px; height: 15px; }
+.marketplace-toggle button.is-active { background: linear-gradient(105deg, #009dff, #0349ff); color: #fff; }
+
+.marketplace-empty { padding: 32px; text-align: center; color: #8fa8c6; border: 1px dashed #335a82; border-radius: 12px; }
+
+.marketplace-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+
+.land-card { border-radius: 14px; overflow: hidden; background: #06274a; border: 1px solid #16304f; display: flex; flex-direction: column; }
+.land-card__media { position: relative; aspect-ratio: 16 / 10; }
+.land-card__img, .land-row__img { width: 100%; height: 100%; display: block; object-fit: cover; }
+.land-card__badge { position: absolute; top: 10px; left: 10px; padding: 4px 10px; border-radius: 999px; font-size: 11px; font-weight: 700; background: #335a82; color: #fff; }
+.land-card__badge--verified { background: #17b57a; }
+.land-card__badge--pending { background: #d6962a; }
+.land-card__heart { position: absolute; top: 8px; right: 8px; display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; border: 0; background: #06274acc; color: #fff; cursor: pointer; }
+.land-card__heart svg { width: 17px; height: 17px; }
+.land-card__heart--active { color: #ff5f6d; }
+.land-card__heart--inline { position: static; background: #0a2c50; }
+.land-card__body { padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 6px; }
+.land-card__body h3 { margin: 0; font-size: 17px; }
+.land-card__loc { margin: 0; display: flex; align-items: center; gap: 6px; font-size: 13px; color: #8fa8c6; }
+.land-card__loc svg { width: 14px; height: 14px; }
+.land-card__meta { margin: 0; display: flex; gap: 14px; font-size: 13px; color: #a9c0da; }
+.land-card__meta span { display: flex; align-items: center; gap: 5px; }
+.land-card__meta svg { width: 14px; height: 14px; }
+.land-card__footer { margin-top: 6px; display: flex; align-items: center; justify-content: space-between; }
+.land-card__price { font-size: 17px; font-weight: 750; color: #fff; display: flex; flex-direction: column; }
+.land-card__price small { font-size: 11px; font-weight: 500; color: #8fa8c6; }
+.land-card__open { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; border: 0; background: linear-gradient(105deg, #009dff, #0349ff); color: #fff; cursor: pointer; }
+.land-card__open svg { width: 16px; height: 16px; }
+
+.marketplace-map-layout { display: grid; grid-template-columns: 1fr; gap: 20px; }
+@media (min-width: 1100px) { .marketplace-map-layout { grid-template-columns: 1.4fr 1fr; } }
+.marketplace-map-list { display: flex; flex-direction: column; gap: 14px; }
+.land-row { display: flex; gap: 14px; padding: 12px; border-radius: 12px; background: #06274a; border: 1px solid #16304f; align-items: center; }
+.land-row__media { width: 110px; height: 80px; border-radius: 10px; overflow: hidden; flex-shrink: 0; }
+.land-row__body { flex: 1; min-width: 0; }
+.land-row__top { display: flex; align-items: center; gap: 10px; }
+.land-row__top h3 { margin: 0; font-size: 15px; }
+.land-row__right { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
+.land-row__actions { display: flex; align-items: center; gap: 8px; }
+.land-row__view { display: flex; align-items: center; gap: 6px; padding: 8px 12px; border: 0; border-radius: 8px; background: #0a2c50; color: #8fd8ff; font: inherit; font-weight: 600; font-size: 13px; cursor: pointer; }
+.land-row__view svg { width: 14px; height: 14px; }
+
+.marketplace-map { position: sticky; top: 85px; border-radius: 14px; overflow: hidden; background: #06274a; border: 1px solid #16304f; padding: 12px; }
+.marketplace-map__svg { width: 100%; height: auto; border-radius: 10px; }
+.marketplace-map__note { margin: 10px 0 0; font-size: 12px; color: #8fa8c6; }
+.marketplace-map__card { margin-top: 10px; padding: 10px 12px; border-radius: 10px; background: #0a2c50; display: flex; flex-direction: column; gap: 6px; }
+.marketplace-map__card button { align-self: flex-start; padding: 6px 12px; border: 0; border-radius: 8px; background: linear-gradient(105deg, #009dff, #0349ff); color: #fff; font: inherit; font-size: 12px; font-weight: 650; cursor: pointer; }
+
+@media (hover: hover) {
+  .land-card__open:hover, .marketplace-search button:hover { filter: brightness(1.08); }
+  .marketplace-more-filters:hover, .marketplace-reset:hover, .land-row__view:hover { background: #0a2c50; }
+}
+.land-card__heart:focus-visible,
+.land-card__open:focus-visible,
+.marketplace-search input:focus-visible,
+.marketplace-search button:focus-visible,
+.marketplace-more-filters:focus-visible,
+.marketplace-reset:focus-visible,
+.marketplace-toggle button:focus-visible,
+.land-row__view:focus-visible { outline: 3px solid #7ef3df; outline-offset: 2px; }
