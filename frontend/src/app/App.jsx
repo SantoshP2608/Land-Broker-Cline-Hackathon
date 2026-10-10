@@ -3,6 +3,8 @@ import HomeLeft from '../features/home/HomeLeft.jsx';
 import Navbar from '../features/home/Navbar.jsx';
 import AuthPage from '../features/account/AuthPage.jsx';
 import ProfilePage from '../features/account/ProfilePage.jsx';
+import SellerDashboard from '../features/seller/SellerDashboard.jsx';
+import ListLandForm from '../features/seller/ListLandForm.jsx';
 import '../features/account/account.css';
 import './App.css';
 
@@ -18,6 +20,8 @@ const panels = {
   settings: ['Settings preview', 'Account settings are not integrated yet. You can switch buying/selling context from the header or sign out to clear the demo session.'],
 };
 function currentPage() {
+  if (window.location.hash === '#seller-dashboard') return 'seller-dashboard';
+  if (window.location.hash === '#seller-list-land') return 'seller-list-land';
   return window.location.hash === '#signin' ? 'signin' : window.location.hash === '#profile' ? 'profile' : 'home';
 }
 export default function App() {
@@ -36,6 +40,7 @@ export default function App() {
     if (page !== 'home') window.scrollTo(0, 0);
   }, [page]);
   function openPanel(nextPanel) {
+    if (nextPanel === 'marketplace' && journey === 'selling') { window.location.hash = 'seller-dashboard'; return; }
     if (nextPanel === 'demo' || nextPanel === 'signin') { window.location.hash = 'signin'; return; }
     setPanel(nextPanel);
     dialogRef.current.showModal();
@@ -43,7 +48,9 @@ export default function App() {
   function continueDemo(details) { setAccount(details); window.location.hash = 'profile'; }
   function signOut() { setAccount(null); setJourney('buying'); window.location.hash = 'signin'; }
   const [title, description] = panels[panel] || panels.help;
+  const sellerProps = { onGoHome: () => { window.location.hash = 'home'; }, onSwitchToBuying: () => { setJourney('buying'); window.location.hash = 'profile'; }, onNavigate: (key) => { if (key === 'dashboard') window.location.hash = 'seller-dashboard'; else if (key === 'listings') window.location.hash = 'seller-list-land'; else if (key === 'profile') window.location.hash = 'profile'; else openPanel(key); } };
   return <>
+    {page === 'seller-dashboard' ? <SellerDashboard {...sellerProps} onListMyLand={() => { window.location.hash = 'seller-list-land'; }} /> : page === 'seller-list-land' ? <ListLandForm {...sellerProps} onCancel={() => { window.location.hash = 'seller-dashboard'; }} /> :
     {page === 'home' ? <>
       <Navbar onOpenPanel={openPanel} />
       <main id="home"><HomeLeft backgroundImage="/assets/Main-hero.png" featureIcons={{ trusted: '/assets/assurance.png', extraction: '/assets/ai-verf.png', comparison: '/assets/doc-search.png', transparency: '/assets/human-shield.png' }} onTryDemo={() => openPanel('demo')} onWatchHowItWorks={() => openPanel('workflow')} /></main>
